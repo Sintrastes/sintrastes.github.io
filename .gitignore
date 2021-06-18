@@ -1,3 +1,7 @@
+# ignore draft posts
+
+draft_*
+
 # trivial gitignore file
 .cabal-sandbox/
 cabal.sandbox.config

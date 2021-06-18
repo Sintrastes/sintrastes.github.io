@@ -6,7 +6,7 @@ import           Hakyll
 
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith config $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -57,7 +57,14 @@ main = hakyll $ do
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
+    
+--------------------------------------------------------------------------------
 
+config = defaultConfiguration {
+    destinationDirectory = "blog",
+    providerDirectory    = "src",
+    deployCommand        = "git add . && git commit -m \"Update blog\" && git push"
+}
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
