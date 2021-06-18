@@ -63,7 +63,7 @@ main = hakyllWith config $ do
 config = defaultConfiguration {
     destinationDirectory = "blog",
     providerDirectory    = "src",
-    deployCommand        = "git add . && git commit -m \"Update blog\" && git push"
+    deployCommand        = "git add . && git commit && git push"
 }
 
 --------------------------------------------------------------------------------
