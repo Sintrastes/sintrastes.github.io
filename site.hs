@@ -41,7 +41,14 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
-
+                
+    create ["license.html"] $ do
+        route idRoute
+        compile $ 
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/license.html" defaultContext
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
