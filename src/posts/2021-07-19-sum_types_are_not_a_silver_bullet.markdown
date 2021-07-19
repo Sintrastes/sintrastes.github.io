@@ -10,7 +10,7 @@ In Kotlin, the notion of a *sealed class* (or, more recently, in Kotlin 1.5, tha
  
 In recent years, this feature has found its way into more and more
  traditional OOP and imperative languages: Rust, Swift, Kotlin -- heck, even Java 15 -- all have a form of these "algebraic data types", and so the comments of this blog post
- will apply to any of those languages, as well as to more traditional functional langauges supporting algebraic data types such as Haskell, ML, OCaml, F#, and Scala. 
+ will apply to any of those languages, as well as to more traditional functional languages supporting algebraic data types such as Haskell, ML, OCaml, F#, and Scala. 
  
 In this post I'll argue that in both cases these algebraic data types have the potential to be overused, and give an example of an anti-pattern that can arise with an over-eager use of sum types that I've decided to call "The product of sums trap". I've definitely fallen into this trap myself, so I wanted to share some advice on when using sum types might be a mistake. But first, I'd like to cover a bit of background into the mathematics of algebraic data types.
  If you already are familiar with algebraic data types and their mathematical underpinning, or if you'd simply prefer to get into the meat of the post
@@ -24,7 +24,7 @@ Why are they called *algebraic* data types? Well, the notion (like many notions 
  the idea below briefly for some context in understanding what I mean by "product of sums" in my analogy.
 
 For those not familiar, whereas primary school algebra focuses on *computations* and *algorithms* in a particular algebraic system,
- abstract algebra is the study of *algebraic strucutes* themselves, and the sets of rules that define them. For instance, even back in primary school, you probably learned
+ abstract algebra is the study of *algebraic structures* themselves, and the sets of rules that define them. For instance, even back in primary school, you probably learned
  the rules:
 
 ::: mathblock
@@ -33,7 +33,7 @@ For those not familiar, whereas primary school algebra focuses on *computations*
 ::: 
  
 I won't list them all here, but the ones you learned are technically called the *field laws* of the real numbers, stating that the real numbers
- satisfy all the properties of the algebraic strucutre known as a "field".
+ satisfy all the properties of the algebraic structure known as a "field".
  
 To add some more detail to Awodey's characterization of category theory, I'd like to say further that whereas *abstract algebra* is the study of *algebraic operations*
  (such as `+, *, -`) and *equations*, category theory is the study of *operations on types* (in category theory we would say *objects*) and *functions* (more specifically, *isomorphisms*).
@@ -50,7 +50,7 @@ We say that two types are "isomorphic" and write: $X \equiv Y$ if there exists a
  algebraic data types are -- algebraic.
  
 One way of thinking about algebraic data types is that they can be implemented in terms of two "type operators" -- $+$ and $\times$. These type operators
- then obey very similar laws to the ones we are fimiliar with from elementary arithmetic, but where equality is replaced with isomorphism:
+ then obey very similar laws to the ones we are familiar with from elementary arithmetic, but where equality is replaced with isomorphism:
  
 ::: mathblock
  1. For all types X, Y, and Z: $(X + Y) + Z \equiv X + (Y + Z)$
@@ -81,7 +81,7 @@ You may recognize the `Product` type as being essentially the same as Kotlin's `
  }
  ```
  
- You may also recognize the `Sum<A,B>` I've defined here as being isomorphic to the `Either<A,B>` type defiend in [arrow](https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/).
+ You may also recognize the `Sum<A,B>` I've defined here as being isomorphic to the `Either<A,B>` type defined in [arrow](https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/).
  
 Why are ADTs good?
 ------------------
@@ -104,7 +104,7 @@ This works pretty well. This is a binary tree with a value of type `A` at each p
  where each tree can have possibly a left sub-tree, and possibly a right sub-tree.
  
 What if we wanted to model a binary tree where values are only stored in the leaves? We might try making
- use of inheritance to encode the two seperate cases then:
+ use of inheritance to encode the two separate cases then:
  
 ```kotlin 
 open class BinaryTree<A>
@@ -139,7 +139,7 @@ fun peek(tree: BinaryTree<Int>): String =
 ```
 
 That is annoying. The compiler can't deduce that there are exactly two cases here to consider -- and rightly so,
- there is nothing preventing someone in a third-party code base using our code as a library, or future maintiners 
+ there is nothing preventing someone in a third-party code base using our code as a library, or future maintainers 
  from additionally sub-classing `BinaryTree`, so Kotlin forces us to explicitly account for that in our code.
  
 This is where the sealed modifier comes in. If we replace `open class BinaryTree<A>` with `sealed class BinaryTree<A>`,
@@ -147,7 +147,7 @@ This is where the sealed modifier comes in. If we replace `open class BinaryTree
  can now rest assured that there are exactly two types of `BinaryTree`: A `Branch`, and a `Leaf`, and we can safely omit
  the `else` branch in the above function.
  
-So, sealed classes are good at making definitions of data types, with strong compiler gaurntees that say "This data type will be in exactly one of a finite number of forms".
+So, sealed classes are good at making definitions of data types, with strong compiler guarantees that say "This data type will be in exactly one of a finite number of forms".
 
 Beyond better communicating our intent to the compiler and later maintainers of our code-base, sealed classes are also useful for making illegal states un-representable.
 
@@ -158,8 +158,8 @@ What do I mean by this? Oftentimes, functions will accept a larger set of inputs
   * Return null/some kind of result type.
 
 This is, in some sense, unavoidable in any program that deals with the "outside world". For instance, any sort of parsing function is of this form
- (only *valid* strings will be successfully parsed). However, the best thing to do, both to avoid having to parse more than is nescesary (which could
- cause preformance issues), and to make life easier as a programmer (dealing directly with a `MyObject` is a lot easier than remembering that a particular
+ (only *valid* strings will be successfully parsed). However, the best thing to do, both to avoid having to parse more than is necessary (which could
+ cause performance issues), and to make life easier as a programmer (dealing directly with a `MyObject` is a lot easier than remembering that a particular
  `String` is (probably) a serialized representation of a `MyObject`), is to only parse things at the *edges* of your application, and then to pass around
  more structured data types internally.
  
@@ -200,7 +200,7 @@ Now we no longer have to deal with the possibility that someone called `setField
 Case study: Extensible REPL
 ---------------------------
 
-Lets say you want to build a REPL for a programming language, like `ghci`, or the `python` executable. Ususally these
+Lets say you want to build a REPL for a programming language, like `ghci`, or the `python` executable. Usually these
  applications, in addition to allowing you to make new definitions and evaluate expressions, allow you to enter
  specific "commands". For instance, in `ghci`, `:set +m` lets you unable multi-line entry mode.
  
@@ -244,7 +244,7 @@ A little verbose -- if we plan to add many more commands in the future, it might
 
 Let's then say we have a `ReplCtx` that defines a context of actions we can preform in our Repl
  ^[We will not worry about the actual implementation of such a class here -- but I quite like this
- style of programming in Kotlin. It is reminicent of [MTL](https://hackage.haskell.org/package/mtl)-style programming in Haskell]:
+ style of programming in Kotlin. It is reminiscent of [MTL](https://hackage.haskell.org/package/mtl)-style programming in Haskell]:
  
 ```kotlin
 interface ReplCtx {
@@ -257,7 +257,7 @@ interface ReplCtx {
 ```
 
 Given this, we can define a function which takes a `ReplCommand`, and preforms an action in a
- `ReplCtx`. This cleanly seperates our parsing code from our action-oriented code.
+ `ReplCtx`. This cleanly separates our parsing code from our action-oriented code.
  
 ```kotlin
 fun ReplCtx.executeCommand(command: ReplCommand) {
@@ -290,7 +290,7 @@ object ListAllDefinitions: ReplCommand()
 
 The compiler will happily tell us that we need to add a new case to `executeCommand`. Great! This is why sealed classes are helpful.
  
-Unfortounately, this helpfulness only goes so far. Notice, for example, every time we add a new `ReplCommand,` the compiler will *not* complain that we forgot to add a case to `parseReplCommand`. If you didn't document that `ReplCommand`s are parsed by using the `parseReplCommand` function -- and you're either coming back to this code-base after some time away, and have forgotten the strucutre, or completely new to the code-base, you might scratch your head for awhile, studying the code until you finally see that a new case needs to be added to `parseReplCommand`.
+Unfortunately, this helpfulness only goes so far. Notice, for example, every time we add a new `ReplCommand,` the compiler will *not* complain that we forgot to add a case to `parseReplCommand`. If you didn't document that `ReplCommand`s are parsed by using the `parseReplCommand` function -- and you're either coming back to this code-base after some time away, and have forgotten the structure, or completely new to the code-base, you might scratch your head for awhile, studying the code until you finally see that a new case needs to be added to `parseReplCommand`.
  
 Iterate on this design a few times, add a few new features and a couple of new commands, and you've created, what [I've discovered myself](https://github.com/Sintrastes/bli-prolog/blob/a87a7f8fb4d1736db1357aee93910f269b16ef5b/src/Bli/App/Config.hs) to be a big bowl of spaghetti.
  
@@ -312,7 +312,7 @@ The extensible solution
 ------------------------
 
 Rather than defining a case for each command in our system, let's consider what a command *needs*
- in other to function like a command^[The analogy might be a bit strained at this point, but it seems to me like this alternative way of thinking might be thought of as a "sum of products" soltuion. I attempted to try to work this out formally as an isomorphism between the two solutions, but was not able to say anything concrete (at least for this example). Perhaps there is a more advanced analysis that could be done here to say something more meaningful!].
+ in other to function like a command^[The analogy might be a bit strained at this point, but it seems to me like this alternative way of thinking might be thought of as a "sum of products" solution. I attempted to try to work this out formally as an isomorphism between the two solutions, but was not able to say anything concrete (at least for this example). Perhaps there is a more advanced analysis that could be done here to say something more meaningful!].
 
 ```kotlin
 interface ReplCommand<A> {
@@ -325,7 +325,7 @@ interface ReplCommand<A> {
 }
 ```
 
-Suprirse! The solution in an OOP language is to simply use a plain old interface! In a language like Haskell or C without interfaces, you'd just use typed records/structs. For instance, in Haskell^[Note that where one would use a function with receiver parameter in Kotlin, one often uses a custom monad of some kind in Haskell, which is what `Repl` is here.] the solution would look
+Surprise! The solution in an OOP language is to simply use a plain old interface! In a language like Haskell or C without interfaces, you'd just use typed records/structs. For instance, in Haskell^[Note that where one would use a function with receiver parameter in Kotlin, one often uses a custom monad of some kind in Haskell, which is what `Repl` is here.] the solution would look
  something like:
 
 ```haskell
@@ -427,8 +427,8 @@ object ListDefinitions: ReplCommand<Unit> {
 ```
 
 While this is still a bit verbose, and for more complicated commands with multiple arguments, we may
- again want to consider use of a specailized parsing DSL for parsing command arguments, we have accomplished
- our stated goal: The implementation of `ReplCommands` is cleanly seperated from the logic of running our REPL.
+ again want to consider use of a specialized parsing DSL for parsing command arguments, we have accomplished
+ our stated goal: The implementation of `ReplCommands` is cleanly separated from the logic of running our REPL.
  
 Some final notes
 ----------------
