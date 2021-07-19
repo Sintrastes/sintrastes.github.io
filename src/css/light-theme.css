@@ -8,12 +8,25 @@
 		margin: 0px;
 		padding: 0px;
 		background: #181818;
-		font-family: 'Didact Gothic', sans-serif;
-		font-size: 12pt;
+		font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+		font-size: 12pt;	
 		font-weight: 200;
-		color: #FFF;
 	}
 	
+	ul {
+		list-style-type: square;	
+		margin: 0 0 1em 0;
+	}
+	
+	li {
+		list-style-type: square;	
+		margin: 0.5em;
+	}
+	
+	strong {
+	    font-weight: bold;
+	}
+
 	
 	h1, h2, h3
 	{
@@ -21,45 +34,112 @@
 		padding: 0;
 	}
 	
-	p, ol, ul
+	p
 	{
 		margin-top: 0.5em;
 	}
 	
-	ol, ul
-	{
-		padding: 0;
-		list-style: none;
-	}
 	
 	p
 	{
 		line-height: 180%;
 	}
-	
-	strong
-	{
-	}
-	
+
 	a
 	{
 		text-decoration: none;
-		color: rgba(0,0,10,1);
+		font-weight: bold;
+		color: rgba(62,79,207,1);
 	}
 	
 	a:hover
 	{
 		text-decoration: none;
-		color: rgba(50,50,100,1);
+		color: rgba(93,139,245,1);
 	}
 	
 	.container
 	{
 		overflow: hidden;
-		margin: 0em auto;
-		width: 1200px;
+		margin: auto;
+		width: min(72em, 85vw);
+	}
+
+	.title 
+	{
+		margin: auto;
+		justify-content: center;
+		width: 95%;
 	}
 	
+/*********************************************************************************/
+/* Blockquote Style                                                              */
+/*********************************************************************************/	
+
+.blockquote {
+    margin-left: 2em;
+    margin-right: 2em;
+    border-left: 10px solid #ccc;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+.blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.blockquote p {
+  display: inline;
+}
+
+/*********************************************************************************/
+/* Math block Style                                                              */
+/*********************************************************************************/	
+
+.mathblock {
+    margin-left: 2em;
+    margin-right: 2em;
+    border-left: 10px solid #ccc;
+    padding: 0.5em 1em;
+}
+
+.mathblock:before {
+  color: #ccc;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.mathblock p {
+  display: inline;
+}
+
+/*********************************************************************************/
+/* Code Style                                                                   */
+/*********************************************************************************/
+	
+pre {
+	background: rgb(210, 229, 250);
+	border-radius: 6px;
+	display: block;
+	padding-right: 1em;
+	padding-left: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	width: max-content;
+	min-width: 90%;
+	/* font-size: min(1.75vw, 1em); */
+}
+
+/* Note: I'm not sure how to do this with pandoc output. */
+pre[data-lang]::before { content: attr(data-lang); display: block; }
+
 /*********************************************************************************/
 /* Image Style                                                                   */
 /*********************************************************************************/
@@ -103,14 +183,6 @@
 /*********************************************************************************/
 /* List Styles                                                                   */
 /*********************************************************************************/
-
-	ul.style1
-	{
-	}
-	
-	ul.actions
-	{
-	}
 	
 	ul.actions li
 	{
@@ -127,7 +199,6 @@
 	{
 		margin: 0;
 		padding: 2em 0em 0em 0em;
-		list-style: none;
 	}
 	
 	ul.contact li
@@ -189,78 +260,9 @@
 	.button-alt
 	{
 		padding: 1em 2em;
-		border-color: rgba(0,0,0,.8);
+		border-color: rgba(129, 62, 160, 0.8);
 		color: #FFF;
 	}
-		
-/*********************************************************************************/
-/* 4-column                                                                      */
-/*********************************************************************************/
-
-	.box1,
-	.box2,
-	.box3,
-	.box4
-	{
-		width: 235px;
-	}
-	
-	.box1,
-	.box2,
-	.box3,
-	{
-		float: left;
-		margin-right: 20px;
-	}
-	
-	.box4
-	{
-		float: right;
-	}
-	
-/*********************************************************************************/
-/* 3-column                                                                      */
-/*********************************************************************************/
-
-	.boxA,
-	.boxB,
-	.boxC
-	{
-		width: 384px;
-	}
-
-	.boxA,
-	.boxB
-	{
-		float: left;
-		margin-right: 20px;
-	}
-	
-	.boxC
-	{
-		float: right;
-	}
-
-/*********************************************************************************/
-/* 2-column                                                                      */
-/*********************************************************************************/
-
-	.tbox1,
-	.tbox2
-	{
-		width: 575px;
-	}
-	
-	.tbox1
-	{
-		float: left;
-	}
-
-	.tbox2
-	{
-		float: right;
-	}
-
 	
 /*********************************************************************************/
 /* Heading Titles                                                                */
@@ -273,7 +275,7 @@
 	
 	.title h2
 	{
-		font-size: 2.3em;
+		font-size: max(1.3em, min(2em, 3vw));
 	}
 	
 	.title .byline
@@ -288,8 +290,7 @@
 
 	#wrapper
 	{
-		position: relative;
-		padding: 5em 0em 7em 0em;
+		padding: 5em 0em 3em 0em;
 		background: #FFF;
 	}
 
@@ -299,39 +300,48 @@
 
 	#header-wrapper
 	{
-		position: relative;
-		padding: 1em 0em 2em 0em;
-		background: #111130 no-repeat center;
+		padding:1em 0em 0em 0em;
+		background: #2387ab no-repeat center;
 		background-size: cover;
 	}
 
 	#header
 	{
-		position: relative;
-		padding: 5em 0em;
+		padding: 2em 0em;
 	}
 
 /*********************************************************************************/
-/* Logo                                                                          */
+/* Blog title                                                                          */
 /*********************************************************************************/
 
-	#logo
+	#blog-title
 	{
-		position: absolute;
-		top: 3.6em;
-		left: 0;
+
+		width: 95%;
+		margin: auto;
+		font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; 
 	}
 	
-	#logo h1
+	#blog-title h2
+	{
+		font-size: 3.2em;
+	}
+	
+       #blog-title h3
 	{
 		font-size: 2.6em;
-		color: #79C255;
 	}
-	
-	#logo a
+
+	#blog-title a
 	{
 		text-decoration: none;
-		color: rgba(255,255,255,1);
+		color: rgb(255, 255, 255);
+	}
+
+	#blog-title
+	{
+		text-decoration: none;
+		color: rgb(255, 255, 255);
 	}
 
 /*********************************************************************************/
@@ -341,8 +351,8 @@
 	#menu
 	{
 		position: absolute;
-		top: 4.5em;
-		right: 0;
+		top: 0.75em;
+		right: 1em;
 	}
 	
 	#menu ul
@@ -353,33 +363,30 @@
 	#menu li
 	{
 		display: block;
+		padding: 0.1em;
 		float: left;
 		text-align: center;
+		margin: 0.1em;
 	}
 	
 	#menu li a, #menu li span
 	{
 		padding: 1em 1.5em;
+		background: #2651a8;
+		border-radius: 6px;
 		letter-spacing: 1px;
 		text-decoration: none;
 		text-transform: uppercase;
-		font-size: 0.8em;
-		color: rgba(255,255,255,0.80);
-	}
-	
-	#menu li:hover a, #menu li.active a, #menu li.active span
-	{
+		font-size: max(0.4em, min(0.8em, 1.2vw));
+		font-weight: bold;
+		color: rgba(255,255,255,0.85);
 	}
 	
 	#menu .active a
 	{
-		background: #2651a8;
+		background: #7c178a;
 		border-radius: 6px;
-		color: rgba(255,255,255,1);
-	}
-	
-	#menu .icon
-	{
+		color: rgba(255,255,255,0.85);
 	}
 
 /*********************************************************************************/
@@ -395,11 +402,6 @@
 	#banner .title h2
 	{
 		font-size: 4em;
-	}
-	
-	#banner .title .byline
-	{
-		font-size: 2em;
 	}
 	
 	#banner .button
@@ -418,31 +420,6 @@
 	}
 
 /*********************************************************************************/
-/* Page                                                                          */
-/*********************************************************************************/
-
-	#page
-	{
-	}
-
-/*********************************************************************************/
-/* Content                                                                       */
-/*********************************************************************************/
-
-	#content
-	{
-	}
-
-/*********************************************************************************/
-/* Sidebar                                                                       */
-/*********************************************************************************/
-
-	#sidebar
-	{
-	}
-
-
-/*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
 
@@ -457,7 +434,7 @@
 	{
 		text-align: center;
 		font-size: 1em;
-		color: rgba(0,0,0,0.3);
+		color: rgba(0,0,0,0.45);
 	}
 	
 	#copyright a
@@ -503,28 +480,39 @@
 /* Extra                                                                         */
 /*********************************************************************************/
 
-	#three-column
+	#body
 	{
-		color: rgba(0,0,0,0.6);
+		color: rgba(0,0,0,0.9);
+		font-size: 1em
 	}
 
-	#three-column .fa
+	#body .fa
 	{
 		display: block;
 		padding: 1em 0em;
 		color: rgba(0,0,0,1);
 		font-size: 2em;
 	}
+
+	h2
+	{
+		font-size: max(1.3em, min(2.5vw, 1.5em));
+	}
 	
-	#three-column .title h2
+	#body .title h2
 	{
 		font-weight: bold;
-		color: rgba(0,0,0,0.8);
+		font-size: 1.2em;
+		color: rgba(0,0,0,0.9);
 	}
 
-	#three-column .title .byline
+	#blog-title h2
 	{
-		text-align: center;
-		color: rgba(0,0,0,.5);
+		font-size: max(1em, min(2.5vw, 1.5em));
+	}
+
+	#blog-title h3
+	{
+		font-size: max(0.7em, min(2.3vw, 1.5em));
 	}
 

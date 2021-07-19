@@ -7,6 +7,7 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
+
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -20,6 +21,11 @@ main = hakyllWith config $ do
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
+            
+    -- build up tags
+    tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+
+    let postCtx = getPostCtx tags
 
     match "posts/*" $ do
         route $ setExtension "html"
@@ -74,7 +80,8 @@ config = defaultConfiguration {
 }
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
+getPostCtx :: Tags -> Context String
+getPostCtx tags =
+    tagsField "tags" tags `mappend`
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
