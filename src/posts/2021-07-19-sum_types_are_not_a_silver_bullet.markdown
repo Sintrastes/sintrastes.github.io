@@ -76,7 +76,7 @@ You may recognize the `Product` type as being essentially the same as Kotlin's `
      return Pair(product.first, product.second)
  }
  
- fun pairToProduce(pair: Pair<A,B>): Product<A,B> {
+ fun pairToProduct(pair: Pair<A,B>): Product<A,B> {
      return Product(pair.first, pair.second)
  }
  ```
@@ -117,7 +117,7 @@ class Branch<A>(
 class Leaf<A>(val node: A): BinaryTree<A>()
 ```
 
-I use the `open` keyward here to enable inheritance, but this sort of thing would be possible
+I use the `open` keyword here to enable inheritance, but this sort of thing would be possible
  by default in Java or C++. 
  
 Consider what would happen if we wanted to write a function on such a tree. I'll write an incredibly simple (non-recursive) one

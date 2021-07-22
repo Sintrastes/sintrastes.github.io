@@ -67,7 +67,7 @@
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="kw">return</span> Pair(product.first, product.second)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>}</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">pairToProduce</span>(<span class="va">pair</span>: <span class="dt">Pair</span>&lt;<span class="va">A</span>,<span class="va">B</span>&gt;): <span class="dt">Product</span>&lt;<span class="dt">A</span>,<span class="dt">B</span>&gt; {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">pairToProduct</span>(<span class="va">pair</span>: <span class="dt">Pair</span>&lt;<span class="va">A</span>,<span class="va">B</span>&gt;): <span class="dt">Product</span>&lt;<span class="dt">A</span>,<span class="dt">B</span>&gt; {</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    <span class="kw">return</span> Product(pair.first, pair.second)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>}</span></code></pre></div>
 <p>You may also recognize the <code>Sum&lt;A,B&gt;</code> I’ve defined here as being isomorphic to the <code>Either&lt;A,B&gt;</code> type defined in <a href="https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/">arrow</a>.</p>
@@ -89,7 +89,7 @@
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>): <span class="dt">BinaryTree</span>&lt;<span class="dt">A</span>&gt;()</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="kw">class</span> Leaf&lt;<span class="dt">A</span>&gt;(<span class="kw">val</span> <span class="va">node</span>: <span class="dt">A</span>): <span class="dt">BinaryTree</span>&lt;<span class="dt">A</span>&gt;()</span></code></pre></div>
-<p>I use the <code>open</code> keyward here to enable inheritance, but this sort of thing would be possible by default in Java or C++.</p>
+<p>I use the <code>open</code> keyword here to enable inheritance, but this sort of thing would be possible by default in Java or C++.</p>
 <p>Consider what would happen if we wanted to write a function on such a tree. I’ll write an incredibly simple (non-recursive) one for illustration purposes:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co">/** Print some diagnostic information about a binary tree*/</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">peek</span>(<span class="va">tree</span>: <span class="dt">BinaryTree</span>&lt;<span class="va">Int</span>&gt;): <span class="dt">String</span> =</span>
