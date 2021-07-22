@@ -1,65 +1,17 @@
-<div id="header-wrapper">
-	<div id="header">
-		<div id="blog-title">
-      <div horizontal layout>
-        <a href="#">
-          <h2>Interchange</h2>
-        </a>
-        <h3>&emsp;&emsp;: A blog about category theory, logic, and programming.</h3>
-      </div>
-      <div style="float: right;">
-		<!-- <label class="switch">
-			<i class="fas fa-adjust"></i>
-				<div>
-					<input type="checkbox" onclick="toggleTheme()"/>
-              		<span class="slider round"></span>
-            	</div>
-		</label> !-->
-	</div>
-		</div>
-		<div id="menu">
-			<ul>
-				<li><a href="../index.html" accesskey="1" title>Homepage</a></li>
-				<li><a href="https://www.linkedin.com/in/nathan-bedell-a1b740189/" accesskey="2" title>Linkedin</a></li>
-				<li><a href="https://github.com/Sintrastes" accesskey="3" title>Github</a></li>
-				<li class="active"><a href="#" accesskey="4" title>Blog</a></li>
-			</ul>
-		</div>
-	</div>	
-</div>
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Interchange - Sum types are not a silver bullet: Why you shouldn't always reach for that sealed class.</title>
-        <link href="https://sintrastes.github.io/blog/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide Atom feed" />
-        <link rel="stylesheet" href="../css/slider.css" />
-        <link rel="stylesheet" href="../css/light-theme.css" />
-        <link rel="stylesheet" href="../css/light-syntax.css" />
-
-        <script>
-            function toggleTheme() {
-                // Obtains an array of all <link> elements.
-                // Select your element using indexing.
-                var theme = document.getElementsByTagName('link')[1];
-                var syntaxTheme = document.getElementsByTagName('link')[2];
-      
-                // Change the value of href attribute 
-                // to change the css sheet.
-                if (theme.getAttribute('href') == '/css/light-theme.css') {
-                    theme.setAttribute('href', '/css/dark-theme.css');
-                    syntaxTheme.setAttribute('href', '/css/dark-syntax.css');
-                } else {
-                    theme.setAttribute('href', '/css/light-theme.css');
-                    syntaxTheme.setAttribute('href', '/css/light-syntax.css');
-                }
-            }
-        </script>
-    </head>
-    <body> 
-        <div id="wrapper">
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Interchange</title>
+        <link>http://sintrastes.github.io</link>
+        <description><![CDATA[Nathan's Development blog.]]></description>
+        <atom:link href="http://sintrastes.github.io/rss.xml" rel="self"
+                   type="application/rss+xml" />
+        <lastBuildDate>Mon, 19 Jul 2021 00:00:00 UT</lastBuildDate>
+        <item>
+    <title>Sum types are not a silver bullet: Why you shouldn't always reach for that sealed class.</title>
+    <link>http://sintrastes.github.io/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html</link>
+    <description><![CDATA[<div id="wrapper">
   <div>
     <article>
         <section class="header">
@@ -196,12 +148,12 @@
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>}</span></code></pre></div>
 <p>We could then define a function for parsing such commands from raw strings:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">parseReplCommand</span>(<span class="va">input</span>: <span class="dt">String</span>): <span class="dt">ReplCommand?</span> =</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    <span class="co">// Commands start with a ':' character, so look for that first.</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">':'</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    <span class="co">// Commands start with a &#39;:&#39; character, so look for that first.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">&#39;:&#39;</span>) {</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>        <span class="kw">val</span> <span class="va">cmdText</span> = input.split(<span class="st">&quot; &quot;</span>).first()</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>        <span class="cf">when</span>(cmdText) {</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>            <span class="st">&quot;set_m&quot;</span> -&gt; {</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>                <span class="kw">val</span> <span class="va">rawArg</span> = input.substringAfter(<span class="ch">' '</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>                <span class="kw">val</span> <span class="va">rawArg</span> = input.substringAfter(<span class="ch">&#39; &#39;</span>)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>                rawArg.readAsBooleanOrNull?.let { parsed -&gt;</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a>                    ReplCommand.SetMultiline(parsed)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a>                }</span>
@@ -226,7 +178,7 @@
 <div class="sourceCode" id="cb11"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">ReplCtx</span>.<span class="fu">executeCommand</span>(<span class="va">command</span>: <span class="dt">ReplCommand</span>) {</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    <span class="cf">when</span>(command) {</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>        <span class="kw">is</span> ReplCommand.SetMultiline -&gt; {</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>           <span class="co">// Set the multiline mode to whatever the user's selection is.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>           <span class="co">// Set the multiline mode to whatever the user&#39;s selection is.</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>           <span class="kw">val</span> <span class="va">userSelection</span> = command.value</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>           setMulitlineMode(userSelection)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>        }</span>
@@ -273,13 +225,13 @@
 <p>For a lot of us, sum types are shiny and new – so, especially when first learning about them, we may be biased towards trying to incorporate them into every solution – but sometimes the “boring” solution is the right one.</p>
 <p>Let’s see what our solution looks like now with this interface instead of a sum type. Our code for handling commands looks like:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">parseReplCommand</span>(<span class="va">command</span>: <span class="dt">ReplCommand</span>&lt;<span class="va">A</span>&gt;, <span class="va">input</span>: <span class="dt">String</span>): <span class="dt">A?</span> {</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>    <span class="co">// Commands start with a ':' character, so look for that first.</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">':'</span>) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>    <span class="co">// Commands start with a &#39;:&#39; character, so look for that first.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">&#39;:&#39;</span>) {</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>        <span class="kw">val</span> <span class="va">cmdText</span> = input.split(<span class="st">&quot; &quot;</span>).first()</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>        <span class="co">// If the name of the command is the same as thing one,</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>        <span class="co">// try parsing the arguments to the command.</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>        <span class="cf">if</span> (command.name == cmdText) {</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>            <span class="kw">val</span> <span class="va">argsText</span> = input.substringAfter(<span class="ch">' '</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>            <span class="kw">val</span> <span class="va">argsText</span> = input.substringAfter(<span class="ch">&#39; &#39;</span>)</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a>            command.parseArgs(argsText)</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a>        } <span class="cf">else</span> {</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a>            <span class="kw">null</span></span>
@@ -384,10 +336,11 @@
     <div id="wrapper">
   </div>
 </div>
+]]></description>
+    <pubDate>Mon, 19 Jul 2021 00:00:00 UT</pubDate>
+    <guid>http://sintrastes.github.io/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html</guid>
+    <dc:creator>Nathan Bedell</dc:creator>
+</item>
 
-        <div id="copyright" class="container">
-	    <p>&copy; Nathan Bedell 2021. All exposition is free to use under the <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en">CC BY-NC-SA 3.0</a> license. All relevant code snippets are licensed under the <a href="https://sintrastes.github.io/blog/license.html">MIT license</a>. | Css template adapted from: <a href="http://templated.co">TEMPLATED</a>. | Generated with <a href="https://jaspervdj.be/hakyll/">hakyll</a></p>
-        </div>
-    </body>
-</html>
-
+    </channel>
+</rss>

@@ -26,13 +26,35 @@ main = hakyllWith config $ do
     tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
     let postCtx = getPostCtx tags
-
+    
+    -- Build posts:
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/header.html" postCtx
             >>= relativizeUrls
+    
+    -- Build rss and atom feeds
+    
+    create ["atom.xml"] $ do
+      route idRoute
+      compile $ do
+        let feedCtx = postCtx `mappend` bodyField "description"
+        posts <- fmap (take 10) . recentFirst =<<
+            loadAllSnapshots "posts/*" "content"
+        renderAtom feedConfiguration feedCtx posts
+        
+        
+    create ["rss.xml"] $ do
+      route idRoute
+      compile $ do
+        let feedCtx = postCtx `mappend` bodyField "description"
+        posts <- fmap (take 10) . recentFirst =<<
+            loadAllSnapshots "posts/*" "content"
+        renderRss feedConfiguration feedCtx posts
 
     create ["archive.html"] $ do
         route idRoute
@@ -70,6 +92,17 @@ main = hakyllWith config $ do
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
+    
+--------------------------------------------------------------------------------
+
+feedConfiguration :: FeedConfiguration
+feedConfiguration = FeedConfiguration
+    { feedTitle       = "Interchange"
+    , feedDescription = "Nathan's Development blog."
+    , feedAuthorName  = "Nathan Bedell"
+    , feedAuthorEmail = "nbedell@tulane.edu"
+    , feedRoot        = "http://sintrastes.github.io"
+    }    
     
 --------------------------------------------------------------------------------
 

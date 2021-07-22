@@ -1,71 +1,28 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Interchange - Sum types are not a silver bullet: Why you shouldn't always reach for that sealed class.</title>
-        <link rel="stylesheet" href="../css/slider.css" />
-        <link rel="stylesheet" href="../css/light-theme.css" />
-        <link rel="stylesheet" href="../css/light-syntax.css" />
-
-        <script>
-            function toggleTheme() {
-                // Obtains an array of all <link> elements.
-                // Select your element using indexing.
-                var theme = document.getElementsByTagName('link')[1];
-                var syntaxTheme = document.getElementsByTagName('link')[2];
-      
-                // Change the value of href attribute 
-                // to change the css sheet.
-                if (theme.getAttribute('href') == '/css/light-theme.css') {
-                    theme.setAttribute('href', '/css/dark-theme.css');
-                    syntaxTheme.setAttribute('href', '/css/dark-syntax.css');
-                } else {
-                    theme.setAttribute('href', '/css/light-theme.css');
-                    syntaxTheme.setAttribute('href', '/css/light-syntax.css');
-                }
-            }
-        </script>
-    </head>
-    <body> 
-        <div id="header-wrapper">
-	<div id="header">
-		<div id="blog-title">
-      <div horizontal layout>
-        <a href="#">
-          <h2>Interchange</h2>
-        </a>
-        <h3>&emsp;&emsp;: A blog about category theory, logic, and programming.</h3>
-      </div>
-      <div style="float: right;">
-		<!-- <label class="switch">
-			<i class="fas fa-adjust"></i>
-				<div>
-					<input type="checkbox" onclick="toggleTheme()"/>
-              		<span class="slider round"></span>
-            	</div>
-		</label> !-->
-	</div>
-		</div>
-		<div id="menu">
-			<ul>
-				<li><a href="../index.html" accesskey="1" title>Homepage</a></li>
-				<li><a href="https://www.linkedin.com/in/nathan-bedell-a1b740189/" accesskey="2" title>Linkedin</a></li>
-				<li><a href="https://github.com/Sintrastes" accesskey="3" title>Github</a></li>
-				<li class="active"><a href="#" accesskey="4" title>Blog</a></li>
-			</ul>
-		</div>
-	</div>	
-</div>
-<div id="wrapper">
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Interchange</title>
+    <link href="http://sintrastes.github.io/atom.xml" rel="self" />
+    <link href="http://sintrastes.github.io" />
+    <id>http://sintrastes.github.io/atom.xml</id>
+    <author>
+        <name>Nathan Bedell</name>
+        <email>nbedell@tulane.edu</email>
+    </author>
+    <updated>2021-07-19T00:00:00Z</updated>
+    <entry>
+    <title>Sum types are not a silver bullet: Why you shouldn't always reach for that sealed class.</title>
+    <link href="http://sintrastes.github.io/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html" />
+    <id>http://sintrastes.github.io/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html</id>
+    <published>2021-07-19T00:00:00Z</published>
+    <updated>2021-07-19T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<div id="wrapper">
   <div>
     <article>
         <section class="header">
           <div class="title">
             <h2>Sum types are not a silver bullet: Why you shouldn't always reach for that sealed class.</h2>
             <p>
-              Posted on July 18, 2021
+              Posted on July 19, 2021
               
                 by Nathan Bedell
               
@@ -74,18 +31,18 @@
         </section>
         <section class="container" id="body">
             <p>In Kotlin, the notion of a <em>sealed class</em> (or, more recently, in Kotlin 1.5, that of a <em>sealed interface</em>) is a mechanism for limiting the inheritance of a class (or interface) to one of a fixed number of cases. Together with <em>data classes</em>, this can be used to emulate what is known in the functional programming community as <em>algebraic data types</em>, often abbreviated ADT (much to the chagrin of those who might also abbreviate <em>abstract data type</em> as ADT). These algebraic data types are the combination of <em>product types</em>, and <em>sum types</em> (which correspond to Kotlin’s sealed classes).</p>
-<p>In recent years, this feature has found its way into more and more traditional OOP and imperative languages: Rust, Swift, Kotlin – heck, even Java 15 – all have a form of these “algebraic data types”, and so the comments of this blog post will apply to any of those languages, as well as to more traditional functional langauges supporting algebraic data types such as Haskell, ML, OCaml, F#, and Scala.</p>
+<p>In recent years, this feature has found its way into more and more traditional OOP and imperative languages: Rust, Swift, Kotlin – heck, even Java 15 – all have a form of these “algebraic data types”, and so the comments of this blog post will apply to any of those languages, as well as to more traditional functional languages supporting algebraic data types such as Haskell, ML, OCaml, F#, and Scala.</p>
 <p>In this post I’ll argue that in both cases these algebraic data types have the potential to be overused, and give an example of an anti-pattern that can arise with an over-eager use of sum types that I’ve decided to call “The product of sums trap”. I’ve definitely fallen into this trap myself, so I wanted to share some advice on when using sum types might be a mistake. But first, I’d like to cover a bit of background into the mathematics of algebraic data types. If you already are familiar with algebraic data types and their mathematical underpinning, or if you’d simply prefer to get into the meat of the post and some practical examples, you might want to start from <a href="#why-are-adts-good">here</a></p>
 <h2 id="aside-putting-the-algebraic-into-adts">Aside: Putting the “Algebraic” into ADTs:</h2>
 <p>Why are they called <em>algebraic</em> data types? Well, the notion (like many notions in the typed FP community) comes from <em>category theory</em>, which <a href="https://www.youtube.com/watch?v=BF6kHD1DAeU">Steve Awodey</a> sometimes likes to describe as the <em>abstract algebra of functions</em>. Now, before you run off, I should say: You do not need to understand category theory to understand this post. I simply introduce the idea below briefly for some context in understanding what I mean by “product of sums” in my analogy.</p>
-<p>For those not familiar, whereas primary school algebra focuses on <em>computations</em> and <em>algorithms</em> in a particular algebraic system, abstract algebra is the study of <em>algebraic strucutes</em> themselves, and the sets of rules that define them. For instance, even back in primary school, you probably learned the rules:</p>
+<p>For those not familiar, whereas primary school algebra focuses on <em>computations</em> and <em>algorithms</em> in a particular algebraic system, abstract algebra is the study of <em>algebraic structures</em> themselves, and the sets of rules that define them. For instance, even back in primary school, you probably learned the rules:</p>
 <div class="mathblock">
 <ol type="1">
 <li>For all real numbers x, y, and z: <span class="math inline">(<em>x</em> + <em>y</em>) + <em>z</em> = <em>x</em> + (<em>y</em> + <em>z</em>)</span></li>
 <li>For all real numbers x and y: <span class="math inline"><em>x</em> × <em>y</em> = <em>y</em> × <em>x</em></span></li>
 </ol>
 </div>
-<p>I won’t list them all here, but the ones you learned are technically called the <em>field laws</em> of the real numbers, stating that the real numbers satisfy all the properties of the algebraic strucutre known as a “field”.</p>
+<p>I won’t list them all here, but the ones you learned are technically called the <em>field laws</em> of the real numbers, stating that the real numbers satisfy all the properties of the algebraic structure known as a “field”.</p>
 <p>To add some more detail to Awodey’s characterization of category theory, I’d like to say further that whereas <em>abstract algebra</em> is the study of <em>algebraic operations</em> (such as <code>+, *, -</code>) and <em>equations</em>, category theory is the study of <em>operations on types</em> (in category theory we would say <em>objects</em>) and <em>functions</em> (more specifically, <em>isomorphisms</em>).</p>
 <p>An isomorphism <span class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> (restricting myself here to to case of types and functions) is simply a function that has an inverse – that is, a function <span class="math inline"><em>g</em> : <em>Y</em> → <em>X</em></span> such that:</p>
 <div class="mathblock">
@@ -95,7 +52,7 @@
 </ol>
 </div>
 <p>We say that two types are “isomorphic” and write: <span class="math inline"><em>X</em> ≡ <em>Y</em></span> if there exists an isomorphism between them. I think a good intuition for this is that two types being isomorphic means that they are “essentially the same”, or “two different presentations of the same data”. Given this, I can finally explain why algebraic data types are – algebraic.</p>
-<p>One way of thinking about algebraic data types is that they can be implemented in terms of two “type operators” – <span class="math inline">+</span> and <span class="math inline">×</span>. These type operators then obey very similar laws to the ones we are fimiliar with from elementary arithmetic, but where equality is replaced with isomorphism:</p>
+<p>One way of thinking about algebraic data types is that they can be implemented in terms of two “type operators” – <span class="math inline">+</span> and <span class="math inline">×</span>. These type operators then obey very similar laws to the ones we are familiar with from elementary arithmetic, but where equality is replaced with isomorphism:</p>
 <div class="mathblock">
 <ol type="1">
 <li>For all types X, Y, and Z: <span class="math inline">(<em>X</em> + <em>Y</em>) + <em>Z</em> ≡ <em>X</em> + (<em>Y</em> + <em>Z</em>)</span></li>
@@ -117,7 +74,7 @@
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">pairToProduce</span>(<span class="va">pair</span>: <span class="dt">Pair</span>&lt;<span class="va">A</span>,<span class="va">B</span>&gt;): <span class="dt">Product</span>&lt;<span class="dt">A</span>,<span class="dt">B</span>&gt; {</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    <span class="kw">return</span> Product(pair.first, pair.second)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>}</span></code></pre></div>
-<p>You may also recognize the <code>Sum&lt;A,B&gt;</code> I’ve defined here as being isomorphic to the <code>Either&lt;A,B&gt;</code> type defiend in <a href="https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/">arrow</a>.</p>
+<p>You may also recognize the <code>Sum&lt;A,B&gt;</code> I’ve defined here as being isomorphic to the <code>Either&lt;A,B&gt;</code> type defined in <a href="https://arrow-kt.io/docs/0.10/apidocs/arrow-core-data/arrow.core/-either/">arrow</a>.</p>
 <h2 id="why-are-adts-good">Why are ADTs good?</h2>
 <p>Before getting into the problems that can arise for maintainability when making use of sum types, I’d like first to provide a positive example of how sum types can be good.</p>
 <p>If you’ve taken a course in algorithms and data structures, and haven’t been lucky enough to work in a language with sum types, you’ve probably written code like this before:</p>
@@ -127,7 +84,7 @@
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="kw">val</span> <span class="va">right</span> BinaryTree&lt;A&gt;?</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>}</span></code></pre></div>
 <p>This works pretty well. This is a binary tree with a value of type <code>A</code> at each point of the tree, where each tree can have possibly a left sub-tree, and possibly a right sub-tree.</p>
-<p>What if we wanted to model a binary tree where values are only stored in the leaves? We might try making use of inheritance to encode the two seperate cases then:</p>
+<p>What if we wanted to model a binary tree where values are only stored in the leaves? We might try making use of inheritance to encode the two separate cases then:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">open</span> <span class="kw">class</span> BinaryTree&lt;<span class="dt">A</span>&gt;</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="kw">class</span> Branch&lt;<span class="dt">A</span>&gt;(</span>
@@ -150,9 +107,9 @@
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>        -- We have to put <span class="kw">this</span> here, or the compiler yells at us.</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>        <span class="cf">else</span> -&gt; <span class="kw">throw</span> IllegalStateException(<span class="st">&quot;UNREACHABLE&quot;</span>)</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>    }</span></code></pre></div>
-<p>That is annoying. The compiler can’t deduce that there are exactly two cases here to consider – and rightly so, there is nothing preventing someone in a third-party code base using our code as a library, or future maintiners from additionally sub-classing <code>BinaryTree</code>, so Kotlin forces us to explicitly account for that in our code.</p>
+<p>That is annoying. The compiler can’t deduce that there are exactly two cases here to consider – and rightly so, there is nothing preventing someone in a third-party code base using our code as a library, or future maintainers from additionally sub-classing <code>BinaryTree</code>, so Kotlin forces us to explicitly account for that in our code.</p>
 <p>This is where the sealed modifier comes in. If we replace <code>open class BinaryTree&lt;A&gt;</code> with <code>sealed class BinaryTree&lt;A&gt;</code>, Kotlin only allows inheritance from the base <code>BinaryTree</code> class in the same file it is defined. The compiler (and we!) can now rest assured that there are exactly two types of <code>BinaryTree</code>: A <code>Branch</code>, and a <code>Leaf</code>, and we can safely omit the <code>else</code> branch in the above function.</p>
-<p>So, sealed classes are good at making definitions of data types, with strong compiler gaurntees that say “This data type will be in exactly one of a finite number of forms”.</p>
+<p>So, sealed classes are good at making definitions of data types, with strong compiler guarantees that say “This data type will be in exactly one of a finite number of forms”.</p>
 <p>Beyond better communicating our intent to the compiler and later maintainers of our code-base, sealed classes are also useful for making illegal states un-representable.</p>
 <p>What do I mean by this? Oftentimes, functions will accept a larger set of inputs than is actually considered “valid”, and upon accepting “invalid” input, will:</p>
 <ul>
@@ -160,7 +117,7 @@
 <li>Have undefined/unexpected behavior.</li>
 <li>Return null/some kind of result type.</li>
 </ul>
-<p>This is, in some sense, unavoidable in any program that deals with the “outside world”. For instance, any sort of parsing function is of this form (only <em>valid</em> strings will be successfully parsed). However, the best thing to do, both to avoid having to parse more than is nescesary (which could cause preformance issues), and to make life easier as a programmer (dealing directly with a <code>MyObject</code> is a lot easier than remembering that a particular <code>String</code> is (probably) a serialized representation of a <code>MyObject</code>), is to only parse things at the <em>edges</em> of your application, and then to pass around more structured data types internally.</p>
+<p>This is, in some sense, unavoidable in any program that deals with the “outside world”. For instance, any sort of parsing function is of this form (only <em>valid</em> strings will be successfully parsed). However, the best thing to do, both to avoid having to parse more than is necessary (which could cause performance issues), and to make life easier as a programmer (dealing directly with a <code>MyObject</code> is a lot easier than remembering that a particular <code>String</code> is (probably) a serialized representation of a <code>MyObject</code>), is to only parse things at the <em>edges</em> of your application, and then to pass around more structured data types internally.</p>
 <p>The issue (which is still sometimes unavoidable) is for “internal” functions in the code base which accept a larger set of inputs than is considered “valid”. For example, consider the following function:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co">/** </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co"> * Takes a field of type A, B, or C, and</span></span>
@@ -185,7 +142,7 @@
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">setField</span>(<span class="va">field</span>: <span class="dt">SomeField</span>)</span></code></pre></div>
 <p>Now we no longer have to deal with the possibility that someone called <code>setField</code> with the wrong arguments.</p>
 <h2 id="case-study-extensible-repl">Case study: Extensible REPL</h2>
-<p>Lets say you want to build a REPL for a programming language, like <code>ghci</code>, or the <code>python</code> executable. Ususally these applications, in addition to allowing you to make new definitions and evaluate expressions, allow you to enter specific “commands”. For instance, in <code>ghci</code>, <code>:set +m</code> lets you unable multi-line entry mode.</p>
+<p>Lets say you want to build a REPL for a programming language, like <code>ghci</code>, or the <code>python</code> executable. Usually these applications, in addition to allowing you to make new definitions and evaluate expressions, allow you to enter specific “commands”. For instance, in <code>ghci</code>, <code>:set +m</code> lets you unable multi-line entry mode.</p>
 <p>At first, if you’re new to sealed classes/ADTs, and you’re generally trying to design your systems such that you <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">parse, don’t validate</a>, it might seem like a good idea to define an algebraic data type for commands in this repl, where each term of the sum corresponds to one possible command, such as the following:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">sealed</span> <span class="kw">class</span> ReplCommand {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="co">/** Turn mutli-line mode on or off. */</span></span>
@@ -195,12 +152,12 @@
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>}</span></code></pre></div>
 <p>We could then define a function for parsing such commands from raw strings:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">parseReplCommand</span>(<span class="va">input</span>: <span class="dt">String</span>): <span class="dt">ReplCommand?</span> =</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    <span class="co">// Commands start with a ':' character, so look for that first.</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">':'</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    <span class="co">// Commands start with a &#39;:&#39; character, so look for that first.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">&#39;:&#39;</span>) {</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>        <span class="kw">val</span> <span class="va">cmdText</span> = input.split(<span class="st">&quot; &quot;</span>).first()</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>        <span class="cf">when</span>(cmdText) {</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>            <span class="st">&quot;set_m&quot;</span> -&gt; {</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>                <span class="kw">val</span> <span class="va">rawArg</span> = input.substringAfter(<span class="ch">' '</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>                <span class="kw">val</span> <span class="va">rawArg</span> = input.substringAfter(<span class="ch">&#39; &#39;</span>)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>                rawArg.readAsBooleanOrNull?.let { parsed -&gt;</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a>                    ReplCommand.SetMultiline(parsed)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a>                }</span>
@@ -221,11 +178,11 @@
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">display</span>(<span class="va">text</span>: <span class="dt">String</span>)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">prompt</span>(): <span class="dt">String?</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>}</span></code></pre></div>
-<p>Given this, we can define a function which takes a <code>ReplCommand</code>, and preforms an action in a <code>ReplCtx</code>. This cleanly seperates our parsing code from our action-oriented code.</p>
+<p>Given this, we can define a function which takes a <code>ReplCommand</code>, and preforms an action in a <code>ReplCtx</code>. This cleanly separates our parsing code from our action-oriented code.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">ReplCtx</span>.<span class="fu">executeCommand</span>(<span class="va">command</span>: <span class="dt">ReplCommand</span>) {</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    <span class="cf">when</span>(command) {</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>        <span class="kw">is</span> ReplCommand.SetMultiline -&gt; {</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>           <span class="co">// Set the multiline mode to whatever the user's selection is.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>           <span class="co">// Set the multiline mode to whatever the user&#39;s selection is.</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>           <span class="kw">val</span> <span class="va">userSelection</span> = command.value</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>           setMulitlineMode(userSelection)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>        }</span>
@@ -244,7 +201,7 @@
 <div class="sourceCode" id="cb12"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="co">/** List all of the definitions that have been added into the REPL. */</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="kw">object</span> ListAllDefinitions: <span class="dt">ReplCommand</span>()</span></code></pre></div>
 <p>The compiler will happily tell us that we need to add a new case to <code>executeCommand</code>. Great! This is why sealed classes are helpful.</p>
-<p>Unfortounately, this helpfulness only goes so far. Notice, for example, every time we add a new <code>ReplCommand,</code> the compiler will <em>not</em> complain that we forgot to add a case to <code>parseReplCommand</code>. If you didn’t document that <code>ReplCommand</code>s are parsed by using the <code>parseReplCommand</code> function – and you’re either coming back to this code-base after some time away, and have forgotten the strucutre, or completely new to the code-base, you might scratch your head for awhile, studying the code until you finally see that a new case needs to be added to <code>parseReplCommand</code>.</p>
+<p>Unfortunately, this helpfulness only goes so far. Notice, for example, every time we add a new <code>ReplCommand,</code> the compiler will <em>not</em> complain that we forgot to add a case to <code>parseReplCommand</code>. If you didn’t document that <code>ReplCommand</code>s are parsed by using the <code>parseReplCommand</code> function – and you’re either coming back to this code-base after some time away, and have forgotten the structure, or completely new to the code-base, you might scratch your head for awhile, studying the code until you finally see that a new case needs to be added to <code>parseReplCommand</code>.</p>
 <p>Iterate on this design a few times, add a few new features and a couple of new commands, and you’ve created, what <a href="https://github.com/Sintrastes/bli-prolog/blob/a87a7f8fb4d1736db1357aee93910f269b16ef5b/src/Bli/App/Config.hs">I’ve discovered myself</a> to be a big bowl of spaghetti.</p>
 <p>Now when you want to add a new command, you’ve got <em>several</em> places in the code-base you have to modify, all of which may or may not make the compiler warn you if you’ve missed one of them. You’re keeping up with that documentation for all of this, right?</p>
 <p>Worst comes to worst, let’s say that after dealing with this code-base for awhile, you decide you want users to be able to implement their own custom commands, perhaps through a custom DSL, or some sort of plugin system<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Now we can’t even use sealed types at all! <em>Extensible at run-time</em> is kind of antithetical to <em>known to have exactly these cases at compile-time</em>.</p>
@@ -263,7 +220,7 @@
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>    /** <span class="fu">Function</span> <span class="fu">to</span> <span class="fu">run</span> <span class="fu">once</span> <span class="fu">the</span> <span class="fu">arguments</span> <span class="fu">have</span> <span class="fu">been</span> <span class="fu">parsed</span> <span class="fu">correctly</span>. */</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">ReplCtx</span>.<span class="fu">action</span>(<span class="va">args</span>: <span class="dt">A</span>)</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>}</span></code></pre></div>
-<p>Suprirse! The solution in an OOP language is to simply use a plain old interface! In a language like Haskell or C without interfaces, you’d just use typed records/structs. For instance, in Haskell<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> the solution would look something like:</p>
+<p>Surprise! The solution in an OOP language is to simply use a plain old interface! In a language like Haskell or C without interfaces, you’d just use typed records/structs. For instance, in Haskell<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> the solution would look something like:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">ReplCommand</span> a <span class="ot">=</span> <span class="dt">ReplCommand</span> {</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ot">    name ::</span> <span class="dt">String</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="ot">    parseArgs ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a,</span>
@@ -272,13 +229,13 @@
 <p>For a lot of us, sum types are shiny and new – so, especially when first learning about them, we may be biased towards trying to incorporate them into every solution – but sometimes the “boring” solution is the right one.</p>
 <p>Let’s see what our solution looks like now with this interface instead of a sum type. Our code for handling commands looks like:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="kw">fun</span> <span class="fu">parseReplCommand</span>(<span class="va">command</span>: <span class="dt">ReplCommand</span>&lt;<span class="va">A</span>&gt;, <span class="va">input</span>: <span class="dt">String</span>): <span class="dt">A?</span> {</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>    <span class="co">// Commands start with a ':' character, so look for that first.</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">':'</span>) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>    <span class="co">// Commands start with a &#39;:&#39; character, so look for that first.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>    <span class="cf">if</span> (input.firstOrNull() == <span class="ch">&#39;:&#39;</span>) {</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>        <span class="kw">val</span> <span class="va">cmdText</span> = input.split(<span class="st">&quot; &quot;</span>).first()</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>        <span class="co">// If the name of the command is the same as thing one,</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>        <span class="co">// try parsing the arguments to the command.</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>        <span class="cf">if</span> (command.name == cmdText) {</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>            <span class="kw">val</span> <span class="va">argsText</span> = input.substringAfter(<span class="ch">' '</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>            <span class="kw">val</span> <span class="va">argsText</span> = input.substringAfter(<span class="ch">&#39; &#39;</span>)</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a>            command.parseArgs(argsText)</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a>        } <span class="cf">else</span> {</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a>            <span class="kw">null</span></span>
@@ -347,7 +304,7 @@
 <span id="cb16-29"><a href="#cb16-29" aria-hidden="true"></a>        }</span>
 <span id="cb16-30"><a href="#cb16-30" aria-hidden="true"></a>    }</span>
 <span id="cb16-31"><a href="#cb16-31" aria-hidden="true"></a>}</span></code></pre></div>
-<p>While this is still a bit verbose, and for more complicated commands with multiple arguments, we may again want to consider use of a specailized parsing DSL for parsing command arguments, we have accomplished our stated goal: The implementation of <code>ReplCommands</code> is cleanly seperated from the logic of running our REPL.</p>
+<p>While this is still a bit verbose, and for more complicated commands with multiple arguments, we may again want to consider use of a specialized parsing DSL for parsing command arguments, we have accomplished our stated goal: The implementation of <code>ReplCommands</code> is cleanly separated from the logic of running our REPL.</p>
 <h2 id="some-final-notes">Some final notes</h2>
 <p>While in this post, I have attempted to come up with a criterion for when it is appropriate to use sum types, and when it is appropriate to simply use records, I suspect the answer will not be entirely satisfactory to everyone. The naive maxim I proposed earlier in this post is, I fear, a bit strong, and requires some clarification.</p>
 <p>“Organize your codebase as if you had to support a system that lets you add new cases at run-time.” is I think a great suggestion for things that could be classified as “features” of an application. Repl commands are a good example of this – they’re something tangible you can talk about in a program, of which the number of “features” included is more-or-less arbitrary. For some other examples I think fit this definition well, consider:</p>
@@ -370,10 +327,10 @@
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>We will not worry about the actual implementation of such a class here – but I quite like this style of programming in Kotlin. It is reminicent of <a href="https://hackage.haskell.org/package/mtl">MTL</a>-style programming in Haskell<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>We will not worry about the actual implementation of such a class here – but I quite like this style of programming in Kotlin. It is reminiscent of <a href="https://hackage.haskell.org/package/mtl">MTL</a>-style programming in Haskell<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Multiple functions defined in a module can be considered to be a product of those functions, as given such a module, we have access to <em>both</em> functions. This observation can be made more formal in languages with first-class modules like <a href="https://ocaml.org/manual/firstclassmodules.html">OCaml</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3" role="doc-endnote"><p>On the JVM you’d use a class loader for this. Languages targeting native binaries like Haskell will need some form of <a href="https://hackage.haskell.org/package/plugins">dynamic linking</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>The analogy might be a bit strained at this point, but it seems to me like this alternative way of thinking might be thought of as a “sum of products” soltuion. I attempted to try to work this out formally as an isomorphism between the two solutions, but was not able to say anything concrete (at least for this example). Perhaps there is a more advanced analysis that could be done here to say something more meaningful!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>The analogy might be a bit strained at this point, but it seems to me like this alternative way of thinking might be thought of as a “sum of products” solution. I attempted to try to work this out formally as an isomorphism between the two solutions, but was not able to say anything concrete (at least for this example). Perhaps there is a more advanced analysis that could be done here to say something more meaningful!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p>Note that where one would use a function with receiver parameter in Kotlin, one often uses a custom monad of some kind in Haskell, which is what <code>Repl</code> is here.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6" role="doc-endnote"><p>I may write a post in the future on this, and related techniques in Kotlin.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
@@ -383,9 +340,7 @@
     <div id="wrapper">
   </div>
 </div>
+]]></summary>
+</entry>
 
-        <div id="copyright" class="container">
-	    <p>&copy; Nathan Bedell 2021. All exposition is free to use under the <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en">CC BY-NC-SA 3.0</a> license. All relevant code snippets are licensed under the <a href="https://sintrastes.github.io/blog/license.html">MIT license</a>. | Css template adapted from: <a href="http://templated.co">TEMPLATED</a>. | Generated with <a href="https://jaspervdj.be/hakyll/">hakyll</a></p>
-        </div>
-    </body>
-</html>
+</feed>
