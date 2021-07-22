@@ -3,14 +3,14 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>Interchange</title>
-        <link>http://sintrastes.github.io</link>
+        <link>http://sintrastes.github.io/blog</link>
         <description><![CDATA[Nathan's Development blog.]]></description>
-        <atom:link href="http://sintrastes.github.io/rss.xml" rel="self"
+        <atom:link href="http://sintrastes.github.io/blog/rss.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Mon, 19 Jul 2021 00:00:00 UT</lastBuildDate>
         <item>
     <title>Sum types are not a silver bullet: Why you shouldn't always reach for that sealed class.</title>
-    <link>http://sintrastes.github.io/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html</link>
+    <link>http://sintrastes.github.io/blog/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html</link>
     <description><![CDATA[<div id="wrapper">
   <div>
     <article>
@@ -338,7 +338,7 @@
 </div>
 ]]></description>
     <pubDate>Mon, 19 Jul 2021 00:00:00 UT</pubDate>
-    <guid>http://sintrastes.github.io/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html</guid>
+    <guid>http://sintrastes.github.io/blog/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html</guid>
     <dc:creator>Nathan Bedell</dc:creator>
 </item>
 

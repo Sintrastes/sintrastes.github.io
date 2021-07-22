@@ -101,7 +101,7 @@ feedConfiguration = FeedConfiguration
     , feedDescription = "Nathan's Development blog."
     , feedAuthorName  = "Nathan Bedell"
     , feedAuthorEmail = "nbedell@tulane.edu"
-    , feedRoot        = "http://sintrastes.github.io"
+    , feedRoot        = "http://sintrastes.github.io/blog"
     }    
     
 --------------------------------------------------------------------------------
