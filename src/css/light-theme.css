@@ -307,14 +307,14 @@ pre[data-lang]::before { content: attr(data-lang); display: block; }
 
 	#header-wrapper
 	{
-		padding:1em 0em 0em 0em;
+		padding:0em 0em 0em 0em;
 		background: #2387ab no-repeat center;
 		background-size: cover;
 	}
 
 	#header
 	{
-		padding: 2em 0em;
+		padding: 1em 0em;
 	}
 
 /*********************************************************************************/
