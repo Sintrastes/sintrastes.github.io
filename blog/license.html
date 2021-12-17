@@ -5,27 +5,27 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Interchange - license</title>
-        <link href="https://sintrastes.github.io/blog/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide Atom feed" />
-        <link href="https://sintrastes.github.io/blog/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide Rss feed" />
-        <link rel="stylesheet" href="./css/slider.css" />
         <link rel="stylesheet" href="./css/light-theme.css" />
         <link rel="stylesheet" href="./css/light-syntax.css" />
+        <link rel="stylesheet" href="./css/slider.css" />
+        <link href="https://sintrastes.github.io/blog/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide Atom feed" />
+        <link href="https://sintrastes.github.io/blog/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide Rss feed" />
 
         <script>
             function toggleTheme() {
                 // Obtains an array of all <link> elements.
                 // Select your element using indexing.
-                var theme = document.getElementsByTagName('link')[1];
-                var syntaxTheme = document.getElementsByTagName('link')[2];
+                var theme = document.getElementsByTagName('link')[0];
+                var syntaxTheme = document.getElementsByTagName('link')[1];
       
                 // Change the value of href attribute 
                 // to change the css sheet.
-                if (theme.getAttribute('href') == '/css/light-theme.css') {
-                    theme.setAttribute('href', '/css/dark-theme.css');
-                    syntaxTheme.setAttribute('href', '/css/dark-syntax.css');
+                if (theme.getAttribute('href').includes('light-theme.css')) {
+                    theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-theme.css');
+                    syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-syntax.css');
                 } else {
-                    theme.setAttribute('href', '/css/light-theme.css');
-                    syntaxTheme.setAttribute('href', '/css/light-syntax.css');
+                    theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-theme.css');
+                    syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-syntax.css');
                 }
             }
             
