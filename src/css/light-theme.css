@@ -62,7 +62,14 @@
 	{
 		overflow: hidden;
 		margin: auto;
-		width: min(72em, 85vw);
+		width: min(50em, 85vw);
+	}
+	
+	.header 
+	{
+		overflow:hidden;
+		margin:auto;
+		width:min(62em,95vw);
 	}
 
 	.title 
