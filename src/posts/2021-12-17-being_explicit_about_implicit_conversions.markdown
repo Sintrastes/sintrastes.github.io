@@ -6,7 +6,7 @@ tags: pl_theory, category_theory, abstract_algebra
 
 A lot of the time, I think developers develop cognitive biases against certain features after spending a lot of time being frustrated by
  a particular implementation of that feature. For instance, checked exceptions have left a bad taste in many a Java developer's mouth, 
- and many will go on to say simply that "checked exceptions are bad", whereas if you dig deeper, people will point out that the real 
+ and many will go on to say simply that "checked exceptions are bad", whereas if you dig deeper, people will often point out that the real 
  issue is the false sense of security that such checked exceptions lead to, due to the distinction between checked and unchecked exceptions,
  or generally other issues with this distinction. For instance, a `NullPointerException` in Java is unchecked (i.e. doesn't have to be declared
  in the `throws` block of a function signature) -- which was arguably [a mistake](https://en.wikipedia.org/wiki/Null_pointer#History). And
