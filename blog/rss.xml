@@ -43,8 +43,6 @@
 					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast.png";
                 }
             }
-            
-            
         </script>
     </head>
     <body> 
@@ -64,7 +62,7 @@
 			<li><a href="https://sintrastes.github.io/blog/archive.html" accesskey="4" title="">Blog</a></li>
 			<li>
 			  <label class="switch">
-			    <img height="16" src="http://sintrastes.github.io/blog/images/contrast.png"></img>
+			    <img id="contrast" height="16" src="http://sintrastes.github.io/blog/images/contrast.png"></img>
 			    <div>
 				  <input type="checkbox" onclick="toggleTheme()"/>
               	  <span class="slider round"></span>
@@ -287,8 +285,6 @@ ln(1) = 0</code></pre>
 					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast.png";
                 }
             }
-            
-            
         </script>
     </head>
     <body> 
@@ -308,7 +304,7 @@ ln(1) = 0</code></pre>
 			<li><a href="https://sintrastes.github.io/blog/archive.html" accesskey="4" title="">Blog</a></li>
 			<li>
 			  <label class="switch">
-			    <img height="16" src="http://sintrastes.github.io/blog/images/contrast.png"></img>
+			    <img id="contrast" height="16" src="http://sintrastes.github.io/blog/images/contrast.png"></img>
 			    <div>
 				  <input type="checkbox" onclick="toggleTheme()"/>
               	  <span class="slider round"></span>
