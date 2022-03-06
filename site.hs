@@ -31,10 +31,10 @@ main = hakyllWith config $ do
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+			>>= loadAndApplyTemplate "templates/post.html"    postCtx
+			>>= loadAndApplyTemplate "templates/default.html" postCtx
+		    -- >>= loadAndApplyTemplate "templates/header.html" postCtx
             >>= saveSnapshot "content"
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= loadAndApplyTemplate "templates/header.html" postCtx
             >>= relativizeUrls
     
     -- Build rss and atom feeds
