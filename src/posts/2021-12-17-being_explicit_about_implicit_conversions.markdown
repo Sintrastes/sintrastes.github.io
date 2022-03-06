@@ -276,3 +276,7 @@ asking myself "...How do I convert from X to Y again?". However, in a langauge w
 
 Of all of these, I honestly think that `3` and `4` are the strongest, but of course, I'd be happy to have a debate or more examples/counterexamples of problematic behavior for any of these four points. I think this is an area that deserves further explanation.
  
+Disucssions
+-----------
+
+  * [Reddit r/ProgrammingLanguages](https://www.reddit.com/r/ProgrammingLanguages/comments/riva1r/being_explicit_about_implicit_conversions/)
