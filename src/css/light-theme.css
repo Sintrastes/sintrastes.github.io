@@ -292,7 +292,6 @@ pre[data-lang]::before { content: attr(data-lang); display: block; }
 
 	#header-wrapper
 	{
-		padding:0em 0em 0em 0em;
 		background: #2387ab no-repeat center;
 		position: relative;
 		height: 6em;
@@ -353,10 +352,6 @@ pre[data-lang]::before { content: attr(data-lang); display: block; }
 
 		#blog-title h3 {
 			display: none;
-		}
-		
-		#blog-title h2 {
-		    font-size: 0.85em;
 		}
 	}
 

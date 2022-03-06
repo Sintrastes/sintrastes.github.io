@@ -356,10 +356,6 @@ pre[data-lang]::before { content: attr(data-lang); display: block; }
 		#blog-title h3 {
 			display: none;
 		}
-		
-		#blog-title h2 {
-		    font-size: 0.85em;
-		}
 	}
 
 /*********************************************************************************/
