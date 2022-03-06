@@ -1,9 +1,9 @@
 <html>
   <head>
+    <link href="https://sintrastes.github.io/blog/css/light-theme.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://sintrastes.github.io/blog/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide Atom feed" />
     <link href="https://sintrastes.github.io/blog/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide Rss feed" />
     <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
-    <link href="https://sintrastes.github.io/blog/css/light-theme.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="https://sintrastes.github.io/blog/css/slider.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://sintrastes.github.io/blog/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 	
@@ -12,16 +12,13 @@
                 // Obtains an array of all <link> elements.
                 // Select your element using indexing.
                 var theme = document.getElementsByTagName('link')[0];
-                var syntaxTheme = document.getElementsByTagName('link')[1];
       
                 // Change the value of href attribute 
                 // to change the css sheet.
                 if (theme.getAttribute('href').includes('light-theme.css')) {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-theme.css');
-                    syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-syntax.css');
                 } else {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-theme.css');
-                    syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-syntax.css');
                 }
             }        
     </script>
