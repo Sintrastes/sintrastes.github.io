@@ -41,3 +41,8 @@
 input:checked + .slider {
   transform: translateX(8px);
 }
+
+#menu ul li:hover {
+  background-color: #dedaba;
+}
+

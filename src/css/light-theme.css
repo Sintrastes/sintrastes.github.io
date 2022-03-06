@@ -376,23 +376,16 @@ pre[data-lang]::before { content: attr(data-lang); display: block; }
 		margin: 0.1em;
 	}
 	
-	#menu li a, #menu li span
+	#menu li a, #menu li
 	{
-		padding: 1em 1.5em;
-		background: #2651a8;
+		padding: 0.5em 0.5em;
+		/* background: #2651a8; */
 		border-radius: 6px;
 		letter-spacing: 1px;
 		text-decoration: none;
 		text-transform: uppercase;
-		font-size: 0.8em;
+		font-size: 0.85em;
 		font-weight: bold;
-		color: rgba(255,255,255,0.85);
-	}
-	
-	#menu .active a
-	{
-		background: #7c178a;
-		border-radius: 6px;
 		color: rgba(255,255,255,0.85);
 	}
 
