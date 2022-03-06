@@ -326,17 +326,17 @@ pre[data-lang]::before { content: attr(data-lang); display: block; }
 
 		width: 95%;
 		margin: auto;
-		font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; 
+		/* font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; */
 	}
 	
 	#blog-title h2
 	{
-		font-size: 3.2em;
+		font-size: 2.8em;
 	}
 	
     #blog-title h3
 	{
-		font-size: 2.6em;
+		font-size: 2.2em;
 	}
 
 	#blog-title a
@@ -380,7 +380,6 @@ pre[data-lang]::before { content: attr(data-lang); display: block; }
 	{
 		padding: 0.5em 0.5em;
 		/* background: #2651a8; */
-		border-radius: 6px;
 		letter-spacing: 1px;
 		text-decoration: none;
 		text-transform: uppercase;
