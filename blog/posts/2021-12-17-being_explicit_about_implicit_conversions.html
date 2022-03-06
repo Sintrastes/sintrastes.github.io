@@ -75,4 +75,155 @@
           </div>
         </section>
         <section class="container" id="body">
-            <p>A lot of the time, I think developers develop cognitive biases against certain features after spending a lot of time being frustrated by a particular implementation of that feature. For instance, checked exceptions have left a bad taste in many a Java developer
+            <p>A lot of the time, I think developers develop cognitive biases against certain features after spending a lot of time being frustrated by a particular implementation of that feature. For instance, checked exceptions have left a bad taste in many a Java developer’s mouth, and many will go on to say simply that “checked exceptions are bad”, whereas if you dig deeper, people will often point out that the real issue is the false sense of security that such checked exceptions lead to, due to the distinction between checked and unchecked exceptions, or generally other issues with this distinction. For instance, a <code>NullPointerException</code> in Java is unchecked (i.e. doesn’t have to be declared in the <code>throws</code> block of a function signature) – which was arguably <a href="https://en.wikipedia.org/wiki/Null_pointer#History">a mistake</a>. And such hiccups in the design have led designers of newer languages like Kotlin to leave out the feature entirely, even though, I’d argue, in a language that often emphasizes safety, checked exceptions would be a great feature to have in Kotlin!</p>
+<p>In the Kotlin standard library, there is <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html">a method</a> <code>List&lt;A&gt;.first(): A</code> that returns the first element of a list. Well, that is, so long as the list actually has a first element. On an empty list, <code>first</code> will throw a <code>NoSuchElementException</code>. It says as much in the documentation. Yet there is nothing in the language preventing me from using this function without first checking that the list is non-empty, like there would be with checked exceptions. Of course, one could use data types like <code>Maybe</code> and <code>Either</code> from the typed functional programming world, but I’d argue that those are not always as ergonomic as exceptions and null values – especially in a language where Java interop is important. So why not have the best of both worlds? Kotlin already explicitly handles <code>NullPointerExceptions</code> (a unchecked exception in Java) with it’s null safety mechanisms – why not <code>NoSuchElementException</code> as well? Just because Java isn’t safe enough with it’s checked exceptions doesn’t mean we have to toss it entirely. We should go the other way and make it as safe as it should have been in the first place.</p>
+<p>There are other issues with checked exceptions one could bring up, and I may address those in another blog post, but for now I’d like to address a similar bias against <em>implicit conversions</em>.</p>
+<h2 id="strength-is-in-the-eye-of-the-beholder">Strength is in the eye of the beholder</h2>
+<p>The discussion of implicit conversions is related to that of “strong” v.s. “weak” typing. This can be confusing, because arguably, the term “strongly typed” has at least two separate meanings:</p>
+<ol type="1">
+<li>A language is (more or less) strongly typed to the degree in which it permits implicit conversions.</li>
+<li>Code is more or less strongly typed to the degree in which the developer makes use of types to capture invariants of their code to ensure correctness. (This could also be said of a langauge – meaning the degree to which the language allows or facilitates such a discipline.)</li>
+</ol>
+<p>For instance, Haskell might be said to be more strongly typed than Java, because it has features like sum types that allow for the programmer to express more detailed invariants for it’s types. This is in spite of the fact that nothing is preventing the Haskell developer from writing their codebase <a href="https://hackage.haskell.org/package/acme-stringly-typed-1.0.0.0/docs/Acme-StringlyTyped.html">entirely using the <code>String</code> type</a> – which would hardly be enforcing any invariants at all. After all, a tweet from Donald Trump, the source code to the Linux kernel, the world’s nuclear launch codes, or the entire works of Shakespere translated to Polish all fit inside Haskell’s <code>String</code> type. So even the second meaning of “strongly typed” has a few different senses depending on exactly what we are talking about (i.e. a language, or a particular code-base).</p>
+<p>I think that because this distinction between the meanings 1 and 2 of strongly/weakly typed are often conflated, languages which allow for implicit conversions in any capacity are automatically assumed to be more “weakly typed” in the second sense by association. This, together with the cognitive bias developers might have from working in a language with badly implemented implicit conversions, can lead to an overly quick dismissal of implicit conversions outright.</p>
+<p>I don’t think it is always the case that implicit conversions are harmful, or that implicit conversions necessarily lead to a lack of “strength” in the second sense above. To clarify the situation, I’d like to be <em>explicit</em> about what I mean by implicit conversions, and classify systems of implicit conversions into two cases:</p>
+<ol type="1">
+<li>Arbitrary implicit conversions. From any type, to any type, at the language designer’s (or user’s – if the langauge lets users create their own implicit conversions) whim.</li>
+<li>Principled implicit conversions. Only conversions from a “subtype” to a “supertype” is allowed.</li>
+</ol>
+<p>Case 1 here is what left a lot of developers with a bad taste in their mouth. For instance, <code>C++</code> lets you implicitly convert a <code>float</code> to an <code>int</code> – and JavaScript is like the wild west when it comes to implicit conversions. But what does the alternative look like?</p>
+<p>As a first approximation, let’s interpret “subtype” as “subset”. Intuitively, <code>int32</code> is a <em>subset</em> of the type of <code>float</code>. Of course this isn’t strictly speaking true – the memory layout of these types is different, so one is not strictly speaking a “subset” of the other in that sense. What we really mean in this context is that there is a mapping (function) from <code>int32</code> to <code>float</code> that <em>behaves</em> like a “subset function”. In set theory, these are known as <em>injective functions</em>. More generally, in category theory, these are called <em>monomorphisms</em>, but we’ll get to that more later.</p>
+<p>In other words: A function <span class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> is injective if it maps distinct elements in <code>X</code> to distinct elements in <code>Y</code>. This can be viewed as kind of generalization of a “subset”, because such a function identifies <code>X</code> with the subset of elements of <code>Y</code> that <code>f</code> maps to (it’s “image”).</p>
+<p>Ok, great! So, this would allow for an implicit conversion from <code>int32</code> to <code>float</code>, because we can define an injection from <code>int32</code> to <code>float</code> – but the opposite conversion would not be allowed, because <code>float</code> has more elements than <code>int</code>, so it is impossible to build an injection going the other way.</p>
+<p>This also has problems. Consider an example like this (which those against any form of implicit conversion on primitive types will often cite):</p>
+<pre><code>val x: Double = 7/2
+&gt; 3.0 // (Expected 3.5)</code></pre>
+<p>Or, perhaps even worse:</p>
+<pre><code>val x: Double = 1/2*1.1
+&gt; 0.0 // (Expected 0.55)
+</code></pre>
+<p>The issue is, this only causes an issue due to user expectations as to what “<code>/</code>” means. Now, I’m not saying that’s not a problem – but implicit conversions themselves are not to blame here, and this problem can be solved in other ways.</p>
+<p>Before we get to that, I should note that I am not flat out against operator overloading, or other types of overloading in a language. That’s not the issue here either per se. Having <a href="https://en.wikipedia.org/wiki/ML_(programming_language)">two different sets of arithmetic operators</a> depending on whether you are working with ints or floats is not my cup of tea. The issue is <em>this particular case</em> of operator overloading – and in the next section, I hope to attempt to develop a general rule for why this particular case bothers me.</p>
+<p>Consider how Haskell handles this. The type of the standard division operator in Haskell (<code>/</code>) is:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ot">(/) ::</span> <span class="dt">Fractional</span> a <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p>For those not familiar with Haskell, the <code>Fractional a</code> is a <em>typeclass constraint</em> on the type variable <code>a</code> – and essentially says “This function only works on <code>Fractional</code> types (for instance, <code>Float</code> or <code>Double</code> in Haskell)”. Whereas another function entirely is provided for integral division:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">div</span><span class="ot"> ::</span> <span class="dt">Integral</span> a <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p>Arguably, it makes sense to keep these two different functions apart in a way that it doesn’t make sense to do for other kinds of operators because integral division is a fundamentally different beast than fractional division. But to explain precisely why that is, we need to dive into some theory.</p>
+<h2 id="a-little-bit-of-algebra">A little bit of algebra</h2>
+<p>I’ve touched a little bit <a href="https://sintrastes.github.io/blog/posts/2021-07-19-sum_types_are_not_a_silver_bullet.html">before</a> on my blog on the topic of abstract algebra, to help understand the analogy between classical algebra and <em>algebraic data types</em>. To summarize: Abstract algebra is the study of <em>algebraic structures</em>, which consist of a base set <code>X</code>, a set of operations on that set (such as <code>+</code>, <code>-</code>, <code>*</code>), and a set of laws that those operations have to obey.</p>
+<p>In abstract algebra, a central notion is that of a <em>homomorphism</em>, or <em>structure-preserving-map</em> between two algebraic structures. To demonstrate what I mean by that, I’ll first introduce one of the simplest algebraic structures out there: A <em>monoid</em>.</p>
+<p>A monoid is a just an interface on a type that provides a straightforward way of combining things. Namely:</p>
+<ol type="1">
+<li>A monoid consists of a binary operator <span class="math inline"> ⋅  : (<em>A</em>,<em>A</em>) → <em>A</em></span> that is associative. That is, for all <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> : <em>A</em></span> we have <span class="math inline">(<em>x</em>⋅<em>y</em>) ⋅ <em>z</em> = <em>x</em> ⋅ (<em>y</em>⋅<em>z</em>)</span>. What this means is that we can list a set of things being “combined” unambiguously as: <span class="math inline"><em>x</em> ⋅ <em>y</em> ⋅ <em>z</em> ⋅ <em>w</em> ⋅ ...</span>.</li>
+<li>Furthermore, there is an element, called <span class="math inline"><em>i</em><em>d</em><em>e</em><em>n</em><em>t</em><em>i</em><em>t</em><em>y</em></span> such that <span class="math inline"><em>i</em><em>d</em><em>e</em><em>n</em><em>t</em><em>i</em><em>t</em><em>y</em></span> combined with anything is itself. i.e. <span class="math inline"><em>x</em> ⋅ <em>i</em><em>d</em><em>e</em><em>n</em><em>t</em><em>i</em><em>t</em><em>y</em> = <em>x</em></span> and <span class="math inline"><em>i</em><em>d</em><em>e</em><em>n</em><em>t</em><em>i</em><em>t</em><em>y</em> ⋅ <em>x</em> = <em>x</em></span></li>
+</ol>
+<p>If you’re familiar with the <a href="https://en.wikipedia.org/wiki/Composite_pattern">Composite</a> design pattern – this is an example of a monoid<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. For instance, in rxJava2:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">interface</span> Monoid&lt;<span class="dt">A</span>&gt; {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>    <span class="kw">val</span> <span class="va">identity</span>: A</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">combine</span>(<span class="va">x</span>: <span class="dt">A</span>, <span class="va">y</span>: <span class="dt">A</span>): <span class="dt">A</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="kw">object</span> <span class="fu">DisposableMonoid</span>: <span class="dt">Monoid</span>&lt;<span class="dt">Disposable</span>&gt; {</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>    <span class="kw">override</span> <span class="kw">val</span> <span class="va">identity</span> = CompositeDisposable()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>    <span class="kw">override</span> <span class="kw">fun</span> <span class="fu">combine</span>(<span class="va">x</span>: <span class="dt">Disposable</span>, <span class="va">y</span>: <span class="dt">Disposable</span>): <span class="dt">Disposable</span> {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>        <span class="kw">return</span> CompositeDisposable(x, y)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>    }</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Another example that will be fimiliar to software developers is lists! Consider (as an example of the laws):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>listOf() + listOf(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) == listOf(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) == listOf(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) + listOf()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>(listOf(<span class="dv">1</span>,<span class="dv">2</span>) + listOf(<span class="dv">3</span>)) + listOf(<span class="dv">4</span>,<span class="dv">5</span>) == listOf(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) == listOf(<span class="dv">1</span>,<span class="dv">2</span>) + (listOf(<span class="dv">3</span>) + listOf(<span class="dv">4</span>,<span class="dv">5</span>))</span></code></pre></div>
+<p>For some more mathematical examples, note that real numbers under addition are a monoid with identity <code>0</code>, and they are also a monoid under multiplication with identity <code>1</code>.</p>
+<p>Finally, for a arithmetical counter-example, note that divsion over the real numbers is in fact <em>not</em> a monoid. It fails the associativity condition – for instance: <code>(1.0/2.0)/2.0 == 0.25</code>, but <code>1.0/(2.0/2.0) == 1.0</code>. We will see later that this does in fact fit into another common algebraic structure – just not a monoid.</p>
+<p>So what does it mean to have a function that preserves the structure of a monoid? Well, if we have two monoids <span class="math inline"><em>X</em></span> and <span class="math inline"><em>Y</em></span>, and a map <span class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> between them, it means:</p>
+<ol type="1">
+<li><span class="math inline"><em>f</em></span> must map the identity of <span class="math inline"><em>X</em></span> to the identity of <span class="math inline"><em>Y</em></span>.</li>
+<li><span class="math inline"><em>f</em>(<em>x</em> ⋅<sub><em>X</em></sub> <em>y</em>)</span> must equal <span class="math inline"><em>f</em>(<em>x</em>) ⋅<sub><em>Y</em></sub> <em>f</em>(<em>y</em>)</span> for all <span class="math inline"><em>x</em>, <em>y</em></span>, where <span class="math inline">⋅<sub><em>X</em></sub></span> is the “combine” operation of <span class="math inline"><em>X</em></span>, and <span class="math inline">⋅<sub><em>Y</em></sub></span> is the “combine” operation of <span class="math inline"><em>Y</em></span>.</li>
+</ol>
+<p>For other algebraic structures, the definition of a homomorphism is similar (special elements must map to special elements, and functions applied to the arguments of operators must yield the same result whether they are applied “under” or “over” the operations).</p>
+<p>For an easy example of a monoid homomorphism, consider our example before of the reals under addition and the reals under multiplication. Note that, by high-school arithmetic:</p>
+<p><span class="math display"><em>e</em><sup><em>x</em> + <em>y</em></sup> = <em>e</em><sup><em>x</em></sup> * <em>e</em><sup><em>y</em></sup></span></p>
+<p>So the map <span class="math inline"><em>f</em>(<em>x</em>) = <em>e</em><sup><em>x</em></sup></span> transforms one monoid operation (addition) to another (multiplication). Neat! For identities, note that we also have:</p>
+<p><span class="math display"><em>e</em><sup>0</sup> = 1</span></p>
+<p>So the additive identity is sent to the multiplicative identity. We in fact have a monoid homomorphism from <span class="math inline">ℝ → ℝ</span>.</p>
+<p>The astute reader might further notice that the natural logarithm (in fact, any logarithm) does the same thing, but in reverse:</p>
+<pre><code>ln(x * y) = ln (x + y)
+ln(1) = 0</code></pre>
+<p>As a side-note: This actually provides some intuition for why decibels are measured on a logarithmic scale: We have something that physically multiplicative (decibels), that we want to measure additively (because our brains can comprehend that better!) – so we map the multaplicative scale to a lograithmic scale using a homomorphism!</p>
+<p>Homomorphisms are powerful – as they preserve the structure of the algebra in question, they let us transfer results about one algebraic structure to another.</p>
+<h2 id="rings-and-fields">Rings and Fields</h2>
+<p>We noticed before that both the multiplicative and additive operations on the real numbers formed monoids. Together two such monoids form another algebraic structure called a <em>Ring</em>. I won’t get into all the laws, but I’ll define the structure itself using a Kotlin interface:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">interface</span> Ring&lt;<span class="dt">A</span>&gt; {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="kw">val</span> <span class="va">addId</span>: A</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>    <span class="kw">val</span> <span class="va">mulId</span>: A</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">add</span>(<span class="va">x</span>: <span class="dt">A</span>, <span class="va">y</span>: <span class="dt">A</span>): <span class="dt">A</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">mul</span>(<span class="va">x</span>: <span class="dt">A</span>, <span class="va">y</span>: <span class="dt">A</span>): <span class="dt">A</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">negate</span>(<span class="va">x</span>: <span class="dt">A</span>): <span class="dt">A</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Rings are meant to be a generalization of the algebraic strucutre of the integers – so any laws you can remember from primary school regarding the integers should hold for rings as well – but for those curious, <a href="https://en.wikipedia.org/wiki/Ring_(mathematics)#Definition">here</a> is the formal definition.</p>
+<p>Notably absent from the structure of a ring is an operation for division! Since rings are meant to be generalizations of the integers, this makes sense. Integers do have a “division” operator, but it takes <em>integers</em> to <em>rational numbers</em>, not <em>integers</em> to <em>integers</em>.</p>
+<p>Or, rather, I should say there there is no “proper” division operation on the integers, in the sense that there is no division operation on the integers that makes them into a <em>field</em>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="kw">interface</span> Field&lt;<span class="dt">A</span>&gt;: <span class="dt">Ring</span>&lt;<span class="dt">A</span>&gt; {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    <span class="kw">fun</span> <span class="fu">divide</span>(<span class="va">x</span>: <span class="dt">A</span>, <span class="va">y</span>: <span class="dt">A</span>): <span class="dt">A</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Here, in the field laws, <code>divide</code> has to satisfy the property that for all <em>non-zero</em> <code>x</code>: <code>mul(x, div(1,x)) == 1</code>. In other words, as one would say in abstract algebra<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, <code>divide</code> is the <code>inverse</code> of <code>mul</code>.</p>
+<p>Intuitively, it is easy to convince yourself (though perhaps not formally prove, without knowing some basic ring/field theory) that it is impossible for the integers to have such a <code>divide</code> operation. For instance, <code>2</code> does not have a multiplicative inverse, because that would have to be <code>1/2</code> (multiplicative inverses are unique when they exist) – which is not an integer.</p>
+<p>So already, perhaps you can see why it may not be wise to identify the integral division <code>div</code> in your language, with the floating point (or “real”) division <code>/</code>. But let’s use our knowledge to make this a formal criterion:</p>
+<h2 id="some-criteria-for-sane-implicit-conversions">Some criteria for “sane” implicit conversions</h2>
+<p>Let’s pretend for a moment that <code>/ : (Int, Int) -&gt; Int</code> was in fact a valid division operation, in the sense of field theory. This is maybe not too much of a stretch. Integer division is “kind of” an inverse. For instance, <code>(x * y) / y = x</code> always works<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Now, rather than considering all injective functions valid choices for implicit conversions, let’s instead look at only allowing <em>injective homomorphisms</em>.</p>
+<p>Let’s then consider the explicit mapping <span class="math inline"><em>t</em><em>o</em><em>D</em><em>o</em><em>u</em><em>b</em><em>l</em><em>e</em> : <em>I</em><em>n</em><em>t</em> → <em>D</em><em>o</em><em>u</em><em>b</em><em>l</em><em>e</em></span>. Is it a homomorphism with respect to the integral and floating point division operations?</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a> <span class="fl">1.</span>toDouble()/<span class="fl">2.</span>toDouble</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    = <span class="fl">1.0</span>/<span class="fl">2.0</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>    = <span class="fl">0.5</span></span></code></pre></div>
+<p>whereas:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode kotlin"><code class="sourceCode kotlin"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>(<span class="dv">1</span>/<span class="dv">2</span>).toDouble()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>   = <span class="fl">0.</span>toDouble()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>   = <span class="fl">0.0</span></span></code></pre></div>
+<p>So that is a resounding no!</p>
+<p>This led me to come up with the following “soundness” criterion for implicit conversions:</p>
+<p>A system of implicit conversions is “sane” if:</p>
+<ol type="1">
+<li>All implicit conversions are injective as functions on terms of the programming language.</li>
+<li>There are no cycles in the graph of implicit conversions (conversions only ever go one direction!)</li>
+<li>If there is a structure common to both types X and Y, the implicit conversion should respect that strucutre (i.e. be a homomorphism).</li>
+<li>All implicit conversions from a type <code>X</code> to a type <code>Y</code> should be in some sense <em>unique</em>, or <em>cannoncial</em> at least.</li>
+</ol>
+<p>Since this whole problem deals with the messy, psychological aspect of subverting human expectations, this is not a formal soundness criterion – but merely a guideline to for developing “sane” implicit conversions that will not subvert developer expectations. Each three of these criteria, I think, could also be taken and debated seperately.</p>
+<p>Is it really nescesary that all implicit conversions are injective as functions? I can’t really think of a use case of this where I would want this at the moment (assuming it is still “sound” in the sense that this conversion is a homomorphism for the relevant strucutures – I <em>know</em> that I don’t want the standard lossy C/C++-style implicit conversion from <code>Float</code> to <code>Int</code>) – but that doesn’t mean that non-injective implicit conversions are nescesarialy problematic.</p>
+<p>Is it really nescesary to prohibit cycles in the graph of implicit conversions? Again, just because <code>int &lt;-&gt; float</code> implicit conversions are bad doesn’t nescesarialy mean that bidirectional conversions are bad per se. In Haskell, where there are several different encodings of <em>strings</em> (string, strict and lazy bytestrings, strict and lazy text, bytestring builders, etc…), where these representations are essentailly isomorphic – I think it would be very useful to have some implicit conversions. It certainly would save me some time from asking myself “…How do I convert from X to Y again?”. However, in a langauge with strong, Hindley-Milner-esque type inference, allowing these sorts of implicit conversions could potentially be an implementation concern.</p>
+<p>Of all of these, I honestly think that <code>3</code> and <code>4</code> are the strongest, but of course, I’d be happy to have a debate or more examples/counterexamples of problematic behavior for any of these four points. I think this is an area that deserves further explanation.</p>
+<h2 id="disucssions">Disucssions</h2>
+<ul>
+<li><a href="https://www.reddit.com/r/ProgrammingLanguages/comments/riva1r/being_explicit_about_implicit_conversions/">Reddit r/ProgrammingLanguages</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>In order for this to work, strictly speaking, we may need to slightly modify the notion of “equality” of composite disposables.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Monoids with an inverse form another important algebraic structure called a group, which is incredibly useful for describing symmetries.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>I’m a little bit rusty since my grad school math days, but I should note here that this remark can in fact be made more formal. There is a <a href="https://en.wikipedia.org/wiki/Euclidean_domain">spectrum</a> of different algebraic structures between rings and fields, going from less to more capability to preform “divisions”, as well as other useful properties. <a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+			<script src="https://utteranc.es/client.js" repo="Sintrastes/sintrastes.github.io" issue-term="title" theme="boxy-light" crossorigin="anonymous" async>
+        </script>
+        </section>
+    </article>
+    <div id="wrapper">
+  </div>
+</div>
+</div>
+
+        <div id="copyright" class="container">
+	    <p>&copy; Nathan Bedell 2021. All exposition is free to use under the <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en">CC BY-NC-SA 3.0</a> license. All relevant code snippets are licensed under the <a href="https://sintrastes.github.io/blog/license.html">MIT license</a>. | Css template adapted from: <a href="http://templated.co">TEMPLATED</a>. | Generated with <a href="https://jaspervdj.be/hakyll/">hakyll</a> | Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+	    <p>
+	        <a href="https://github.com/sintrastes/">
+	          <img height="32" src="http://sintrastes.github.io/blog/images/github-logo.png" /> 
+	        </a>
+	         &nbsp &nbsp
+	        <a href="https://www.linkedin.com/in/nathan-bedell-a1b740189/">
+	          <img height="32" src="http://sintrastes.github.io/blog/images/linkedin.png" />
+	        </a>
+	    </p>
+        </div>
+    </body>
+</html>

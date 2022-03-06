@@ -54,9 +54,7 @@
 	<div id="header">
 		<div id="blog-title">
           <div horizontal layout>
-            <a href="#">
-              <h2>Interchange</h2>
-            </a>
+            <h2>Interchange</h2>
             <div id="subheading">
               <h3> : Blog (Category Theory × Logic × Programming)</h3>
             </div>
@@ -211,6 +209,10 @@ ln(1) = 0</code></pre>
 <p>Is it really nescesary that all implicit conversions are injective as functions? I can’t really think of a use case of this where I would want this at the moment (assuming it is still “sound” in the sense that this conversion is a homomorphism for the relevant strucutures – I <em>know</em> that I don’t want the standard lossy C/C++-style implicit conversion from <code>Float</code> to <code>Int</code>) – but that doesn’t mean that non-injective implicit conversions are nescesarialy problematic.</p>
 <p>Is it really nescesary to prohibit cycles in the graph of implicit conversions? Again, just because <code>int &lt;-&gt; float</code> implicit conversions are bad doesn’t nescesarialy mean that bidirectional conversions are bad per se. In Haskell, where there are several different encodings of <em>strings</em> (string, strict and lazy bytestrings, strict and lazy text, bytestring builders, etc…), where these representations are essentailly isomorphic – I think it would be very useful to have some implicit conversions. It certainly would save me some time from asking myself “…How do I convert from X to Y again?”. However, in a langauge with strong, Hindley-Milner-esque type inference, allowing these sorts of implicit conversions could potentially be an implementation concern.</p>
 <p>Of all of these, I honestly think that <code>3</code> and <code>4</code> are the strongest, but of course, I’d be happy to have a debate or more examples/counterexamples of problematic behavior for any of these four points. I think this is an area that deserves further explanation.</p>
+<h2 id="disucssions">Disucssions</h2>
+<ul>
+<li><a href="https://www.reddit.com/r/ProgrammingLanguages/comments/riva1r/being_explicit_about_implicit_conversions/">Reddit r/ProgrammingLanguages</a></li>
+</ul>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
@@ -294,9 +296,7 @@ ln(1) = 0</code></pre>
 	<div id="header">
 		<div id="blog-title">
           <div horizontal layout>
-            <a href="#">
-              <h2>Interchange</h2>
-            </a>
+            <h2>Interchange</h2>
             <div id="subheading">
               <h3> : Blog (Category Theory × Logic × Programming)</h3>
             </div>
