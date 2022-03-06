@@ -40,9 +40,11 @@
                 if (theme.getAttribute('href').includes('light-theme.css')) {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-theme.css');
                     syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-syntax.css');
+					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast-light.png";
                 } else {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-theme.css');
                     syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-syntax.css');
+					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast.png";
                 }
             }
             
@@ -282,9 +284,11 @@ ln(1) = 0</code></pre>
                 if (theme.getAttribute('href').includes('light-theme.css')) {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-theme.css');
                     syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-syntax.css');
+					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast-light.png";
                 } else {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-theme.css');
                     syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-syntax.css');
+					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast.png";
                 }
             }
             

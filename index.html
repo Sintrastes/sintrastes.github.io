@@ -15,15 +15,20 @@
                 // Obtains an array of all <link> elements.
                 // Select your element using indexing.
                 var theme = document.getElementsByTagName('link')[0];
+                var syntaxTheme = document.getElementsByTagName('link')[1];
       
                 // Change the value of href attribute 
                 // to change the css sheet.
                 if (theme.getAttribute('href').includes('light-theme.css')) {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-theme.css');
+                    syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/dark-syntax.css');
+					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast-light.png";
                 } else {
                     theme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-theme.css');
+                    syntaxTheme.setAttribute('href', 'https://sintrastes.github.io/blog/css/light-syntax.css');
+					document.getElementById("contrast").src="http://sintrastes.github.io/blog/images/contrast.png";
                 }
-            }        
+            }
     </script>
   </head>
   <body>
