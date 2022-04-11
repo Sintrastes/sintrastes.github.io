@@ -1,7 +1,7 @@
 
 .main-column {
+  overflow: hidden;
   margin: auto;
   width: min(50em, 85vw);
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  height: 68vh;
 }
