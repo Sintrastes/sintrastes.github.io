@@ -1,6 +1,6 @@
 code size summary per package:
 
-base:                    415321
+base:                    415178
 base64-bytestring-1.0.0.3-7zG9vgsdm8qLGwaAC9NF07:8171
 bytestring-0.10.8.2-FBklFuapa1a7kq4yflY7Bt:27219
 categories-1.0.7-Dh5NYAK90rPBJ1V90eAyVL:9136
@@ -12,10 +12,10 @@ dependent-sum-0.7.1.0-6mH5zQTyn838WQ5Pmi2hkK:7007
 directory-1.3.3.0-5pg72mHzHk4Dhxxy4wYd2z:5477
 either-5.0.1.1-3YPwd6rf8LK250fzT2lR0Z:21281
 filepath-1.4.2.1-DG92Jon7uT21h5exmtoJCU:766
-free-5.1.3-H0v8xlJsDIHMD0OEGphVq:29366
-frontend-0.1-GaXWFK4lCr220EWR8WWsHi:90410
-frontend-lib-0.1-5XJNUa5hANJKbpqtKopVtv:66359
-ghc-prim:                50604
+free-5.1.3-H0v8xlJsDIHMD0OEGphVq:29303
+frontend-0.1-GaXWFK4lCr220EWR8WWsHi:95262
+frontend-lib-0.1-5XJNUa5hANJKbpqtKopVtv:69852
+ghc-prim:                50312
 ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj:3220
 ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi:36737
 ghcjs-prim-0.1.1.0-EXzjGVHQlAS2XAXcu0iCbS:4294
@@ -24,20 +24,20 @@ integer-gmp:             2203
 lens-4.18.1-Aupi6yd1P7pL7RmnJsMl7C:8060
 main:                    24816
 monad-tree-0.2.0.0-9T2qdaZKaZ35jeZ70rdAJg:15338
-montague-0.0.1.0-Fef4gfZq3rCE9hsVLZzzuv:55868
+montague-0.0.1.0-Fef4gfZq3rCE9hsVLZzzuv:55869
 mtl-2.2.2-ApFELyUjwv93Vj2GS8sioS:1728
 network-uri-2.6.3.0-KIeMkYkYENdGskZA1cF6GE:8258
-obelisk-executable-config-lookup-0.1.1-HlkfoM29qmDDK1JzKJFnkV:555825
-obelisk-frontend-0.1-4aa7LHQrQlc1ZEvgZ8K66V:136892
-obelisk-route-0.2-AxchlYiVNLQ8tL3BjMfUzR:46873
+obelisk-executable-config-lookup-0.1.1-HlkfoM29qmDDK1JzKJFnkV:555891
+obelisk-frontend-0.1-4aa7LHQrQlc1ZEvgZ8K66V:136891
+obelisk-route-0.2-AxchlYiVNLQ8tL3BjMfUzR:46689
 parsec-3.1.13.0-3Gwm2ELnIeS8o7RD1pxF42:30990
 partial-order-0.2.0.0-4uIdUVMco9f53jG1rFetJ1:6990
-patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47:28428
+patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47:27675
 primitive-0.6.3.0-KfguiTuxgILGqu8JEOpKRI:1
 profunctors-5.5.2-GySOEfjvPx07TepkO5pvFX:1
 ref-tf-0.4.0.2-LD4UXOE0PRZFEDMcKdnep:1092
-reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:478351
-reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:1082781
+reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:478439
+reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:1082949
 semialign-1.1.0.1-DRPyOaHPQMpJh4iEXtgA7n:662
 some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp:4388
 text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar:15323
@@ -63,7 +63,7 @@ base
     Data.Semigroup.Internal:            146
     Data.Tuple:                         1
     Data.Type.Coercion:                 1
-    Data.Type.Equality:                 41788
+    Data.Type.Equality:                 41647
     Data.Typeable.Internal:             9964
     Foreign.C.Error:                    874
     Foreign.Marshal.Alloc:              2503
@@ -88,7 +88,7 @@ base
     GHC.IO.Encoding.Failure:            4671
     GHC.IO.Encoding.Latin1:             1
     GHC.IO.Encoding.Types:              58142
-    GHC.IO.Encoding.UTF8:               11841
+    GHC.IO.Encoding.UTF8:               11840
     GHC.IO.Exception:                   34173
     GHC.IO.FD:                          3854
     GHC.IO.Handle:                      10631
@@ -112,7 +112,7 @@ base
     GHC.Stack.Types:                    9095
     GHC.TopHandler:                     547
     GHC.Unicode:                        1
-    GHC.Weak:                           10277
+    GHC.Weak:                           10276
     GHC.Word:                           3703
     Numeric:                            1697
     System.IO:                          643
@@ -167,16 +167,16 @@ filepath-1.4.2.1-DG92Jon7uT21h5exmtoJCU
     System.FilePath.Posix:              766
 
 free-5.1.3-H0v8xlJsDIHMD0OEGphVq
-    Control.Monad.Free:                 29366
+    Control.Monad.Free:                 29303
 
 frontend-0.1-GaXWFK4lCr220EWR8WWsHi
-    Frontend.Obelisk:                   90410
+    Frontend.Obelisk:                   95262
 
 frontend-lib-0.1-5XJNUa5hANJKbpqtKopVtv
-    Montague.Frontend:                  35472
+    Montague.Frontend:                  39392
     Montague.Frontend.NavBar:           4656
-    Montague.Frontend.Preferences:      3701
-    Montague.Frontend.TabDisplay:       13809
+    Montague.Frontend.Preferences:      3513
+    Montague.Frontend.TabDisplay:       13570
     Montague.Frontend.Utils:            5590
     Montague.Frontend.Utils.Javascript: 3131
 
@@ -185,7 +185,7 @@ ghc-prim
     GHC.Classes:                        139
     GHC.IntWord64:                      1610
     GHC.Tuple:                          173
-    GHC.Types:                          41558
+    GHC.Types:                          41266
 
 ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj
     Data.JSString:                      1
@@ -237,7 +237,7 @@ monad-tree-0.2.0.0-9T2qdaZKaZ35jeZ70rdAJg
 montague-0.0.1.0-Fef4gfZq3rCE9hsVLZzzuv
     Montague:                           44735
     Montague.Lexicon:                   714
-    Montague.Semantics:                 10214
+    Montague.Semantics:                 10215
     Montague.Types:                     205
 
 mtl-2.2.2-ApFELyUjwv93Vj2GS8sioS
@@ -248,14 +248,14 @@ network-uri-2.6.3.0-KIeMkYkYENdGskZA1cF6GE
 
 obelisk-executable-config-lookup-0.1.1-HlkfoM29qmDDK1JzKJFnkV
     Obelisk.Configs:                    16678
-    Obelisk.ExecutableConfig.Lookup:    539147
+    Obelisk.ExecutableConfig.Lookup:    539213
 
 obelisk-frontend-0.1-4aa7LHQrQlc1ZEvgZ8K66V
     Obelisk.Frontend:                   2692
-    Obelisk.Frontend.Cookie:            134200
+    Obelisk.Frontend.Cookie:            134199
 
 obelisk-route-0.2-AxchlYiVNLQ8tL3BjMfUzR
-    Obelisk.Route:                      34634
+    Obelisk.Route:                      34450
     Obelisk.Route.Frontend:             12239
 
 parsec-3.1.13.0-3Gwm2ELnIeS8o7RD1pxF42
@@ -270,7 +270,7 @@ partial-order-0.2.0.0-4uIdUVMco9f53jG1rFetJ1
 
 patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47
     Data.Functor.Misc:                  161
-    Data.Patch.Class:                   5385
+    Data.Patch.Class:                   4632
     Data.Patch.DMap:                    17272
     Data.Patch.DMapWithMove:            3889
     Data.Patch.IntMap:                  293
@@ -296,15 +296,15 @@ reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u
     Reflex.Dynamic:                     20036
     Reflex.EventWriter.Base:            368
     Reflex.FastWeak:                    85
-    Reflex.Host.Class:                  1804
+    Reflex.Host.Class:                  2017
     Reflex.Network:                     809
     Reflex.NotReady.Class:              36685
     Reflex.PerformEvent.Base:           1594
     Reflex.PerformEvent.Class:          21664
     Reflex.PostBuild.Base:              1
-    Reflex.PostBuild.Class:             62882
+    Reflex.PostBuild.Class:             62758
     Reflex.Requester.Base:              1
-    Reflex.Requester.Class:             284348
+    Reflex.Requester.Class:             284347
     Reflex.Spider.Internal:             7660
     Reflex.TriggerEvent.Base:           1
     Reflex.TriggerEvent.Class:          1702
@@ -312,11 +312,11 @@ reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u
 reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2
     Foreign.JavaScript.TH:              6331
     Reflex.Dom.Builder.Class:           132648
-    Reflex.Dom.Builder.Class.Events:    720499
-    Reflex.Dom.Builder.Immediate:       17913
+    Reflex.Dom.Builder.Class.Events:    720502
+    Reflex.Dom.Builder.Immediate:       17912
     Reflex.Dom.Location:                65028
     Reflex.Dom.Main:                    82566
-    Reflex.Dom.Prerender:               35998
+    Reflex.Dom.Prerender:               36164
     Reflex.Dom.Widget.Basic:            19402
     Reflex.Dom.Widget.Input:            2396
 
@@ -350,5 +350,5 @@ universe-base-1.1-9PmrexOAA06LYaqgE3GLJD
 
 
 
-packed metadata: 1942272
+packed metadata: 1947293
 
