@@ -1,3 +1,6 @@
+html {
+  overscroll-behavior: none;
+}
 
 .main-column {
   overflow: hidden;
