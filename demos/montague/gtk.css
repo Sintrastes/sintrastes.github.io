@@ -87,10 +87,10 @@ input[type=checkbox] {
     background-size: 50%;
 }
 
-textarea .gtk {
+textarea {
     border-color: var(--gtk-text-border);
 }
   
-.gtk {
+div {
     background-color: var(--gtk-bg);
 }
