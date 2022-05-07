@@ -16,7 +16,7 @@
     --gtk-accent: #4a90d9;
     --gtk-accent-dark: #184472;
   
-    --gtk-textbox-grad-to: #f2f2f2;
+    --gtk-textbox-grad-to: #f0f0f0;
     --gtk-textbox-grad-from: #ffffff;
     --gtk-textbox-focus: #729fcf;
     --gtk-textbox-border: #babdb6;
@@ -57,7 +57,7 @@ input[type=text] {
     --content:<input type="text" class="gtk-textbox"/>;
     background-image: linear-gradient(
         var(--gtk-textbox-grad-to), 
-        50%, 
+        10%, 
         var(--gtk-textbox-grad-from)
     );
     font-family: cantarell;
