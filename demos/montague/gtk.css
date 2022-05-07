@@ -31,11 +31,12 @@ body {
 
 p, span, h1, h2, h3, h4, h5, a, label {
     font-family: cantarell;
+    color: #555753;
 }
   
 .gtk-btn {
     --content:
-      <p>Export Schema</a>;
+      <p>Export Schema</p>;
     height: auto;
     font-size: 13dp;
     padding: 8px;
