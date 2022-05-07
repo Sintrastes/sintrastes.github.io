@@ -37,12 +37,13 @@ p, span, h1, h2, h3, h4, h5, a, label {
     --content:
       <p>Export Schema</a>;
     height: auto;
-    font-size: 11px;
-    padding: 4px;
+    font-size: 13dp;
+    padding: 8px;
+    margin: 4px;
     background-image: linear-gradient(
-        var(--gtk-btn-grad-from), 
-        97%, 
-        var(--gtk-btn-grad-to)
+        var(--gtk-btn-grad-to), 
+        85%,
+        var(--gtk-btn-grad-from)
     );
     border-color: var(--gtk-btn-border);
     border-style: solid;
