@@ -68,6 +68,15 @@ p, span, h1, h2, h3, h4, h5, a, label {
     border-width: 0px;
     font-family: cantarell;
 }
+
+#nav-mobile > li {
+    list-style-type: none;
+    display: inline-block;
+}  
+
+#nav-mobile a {
+    padding: 15px;
+}
   
 input[type=text] {
     --content:<input type="text" class="gtk-textbox"/>;
