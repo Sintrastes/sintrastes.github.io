@@ -12,8 +12,7 @@
     width: 100%;
 }
 .container__left {
-    /* Initially, the left takes 3/4 width */
-    width: 75%;
+    width: 50%;
 
     /* Misc */
     align-items: center;
