@@ -56,7 +56,13 @@ nav svg {
 }
 
 a.btn {
-  background-color: var(--button-color);
+  background-color: var(--select-color);
+  transition: background-color 0.5s ease-in;
+}
+
+a.btn:hover {
+  background-color: var(--select-color);
+  transition: background-color 0.5s ease-in;
 }
 
 body {
