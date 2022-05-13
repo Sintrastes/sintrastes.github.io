@@ -56,7 +56,7 @@ nav svg {
 }
 
 a.btn {
-  background-color: var(--select-color);
+  background-color: var(--button-color);
   transition: background-color 0.5s ease-in;
 }
 
