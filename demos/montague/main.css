@@ -40,6 +40,11 @@ nav i {
   transition: color 0.5s ease-in;
 }
 
+nav a {
+  color: var(--navbar-text-color);
+  transition: color 0.5s ease-in;
+}
+
 body {
   background-color: var(--background-color);
   transition: background-color 0.5s ease-in;
