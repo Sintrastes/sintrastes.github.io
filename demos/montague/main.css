@@ -10,6 +10,11 @@ html {
   height: 85vh;
 }
 
+.w3-sidebar {
+  background-color: var(--modal-background-color);
+  color: var(--text-color-light);
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
