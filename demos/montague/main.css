@@ -161,6 +161,16 @@ a.text-link {
   color: var(--input-focus-color);
 }
 
+.input-field input[type=number]:not(.browser-default):focus, textarea:focus {
+  border-bottom: 1px solid var(--input-focus-color);
+  -webkit-box-shadow: 0 1px 0 0 var(--input-focus-color);
+  box-shadow: 0 1px 0 0 var(--input-focus-color);
+}
+
+.input-field input[type=number]:not(.browser-default):focus + label {
+  color: var(--input-focus-color);
+}
+
 input {
   color: var(--text-color);
 }
