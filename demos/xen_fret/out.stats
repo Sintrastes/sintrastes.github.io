@@ -1,53 +1,84 @@
 code size summary per package:
 
-adjunctions-4.4-IBKU560MUUtE7GJ2vzCFFO:12250
-base:                    485065
-blaze-builder-0.4.1.0-4EBj6hCi4Z9F7NeE00XaNv:662
-bytestring-0.10.8.2-FBklFuapa1a7kq4yflY7Bt:20947
-colour-2.3.5-LFkzp284SGfHoPQQyfBpOL:97256
-containers-0.6.0.1-BAqcfV1UBBeCIRjPbUYeSG:183491
-dependent-map-0.4.0.0-7ZBYpIk3RCR58ZlZDKMN7P:50609
-dependent-sum-0.7.1.0-6mH5zQTyn838WQ5Pmi2hkK:17894
-diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO:160084
-diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih:292526
-diagrams-solve-0.1.2-Lr5Lu8LrlaZ7zXRSCLBdw6:20462
-diagrams-svg-1.4.3-G7hBZmwBkEiB1t3X6zhEJX:76880
-distributive-0.6.2-HKXiWbz21YEHYOoULaxc77:7457
-dual-tree-0.2.2.1-BqrZYTmdpP8F9po1oEErm7:28940
-fingertree-0.1.4.2-5iNGjEzNxpkI7q8kC5QiOe:522
-ghc-prim:                61132
-ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj:1004
-ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi:25082
-ghcjs-prim-0.1.1.0-EXzjGVHQlAS2XAXcu0iCbS:4297
-integer-gmp:             53376
-intervals-0.9.1-ANlqio4eGwgHOQfZDTyogZ:4115
+adjunctions-4.4-IBKU560MUUtE7GJ2vzCFFO:48137
+aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT:257178
+aeson-casing-0.2.0.0-G5p2vhOn0hGJlFmLDhg7Z:5132
+attoparsec-0.13.2.2-8BD21qJal1eAqGV4DRS4eY:43768
+base:                    525814
+blaze-builder-0.4.1.0-4EBj6hCi4Z9F7NeE00XaNv:1511
+bytestring-0.10.8.2-FBklFuapa1a7kq4yflY7Bt:51073
+case-insensitive-1.2.1.0-CIq41TSlk9rBbX87uWPBfa:1
+colour-2.3.5-LFkzp284SGfHoPQQyfBpOL:99994
+containers-0.6.0.1-BAqcfV1UBBeCIRjPbUYeSG:182681
+dependent-map-0.4.0.0-7ZBYpIk3RCR58ZlZDKMN7P:50386
+dependent-sum-0.7.1.0-6mH5zQTyn838WQ5Pmi2hkK:16893
+diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO:150708
+diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih:307272
+diagrams-solve-0.1.2-Lr5Lu8LrlaZ7zXRSCLBdw6:43599
+diagrams-svg-1.4.3-G7hBZmwBkEiB1t3X6zhEJX:88024
+directory-1.3.3.0-5pg72mHzHk4Dhxxy4wYd2z:5029
+distributive-0.6.2-HKXiWbz21YEHYOoULaxc77:7529
+dual-tree-0.2.2.1-BqrZYTmdpP8F9po1oEErm7:19015
+filepath-1.4.2.1-DG92Jon7uT21h5exmtoJCU:28656
+fingertree-0.1.4.2-5iNGjEzNxpkI7q8kC5QiOe:2668
+ghc-prim:                112341
+ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj:4111
+ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi:28989
+ghcjs-prim-0.1.1.0-EXzjGVHQlAS2XAXcu0iCbS:4056
+integer-gmp:             70500
+integer-logarithms-1.0.3-8EbIvyaPt1VK2rKaCK88I2:4661
+intervals-0.9.1-ANlqio4eGwgHOQfZDTyogZ:231
+jsaddle-0.9.8.0-37KMgpDNf3nFolzylNMgUe:6024
 lens-4.18.1-Aupi6yd1P7pL7RmnJsMl7C:1
-linear-1.21.1-LooYT6hNAfFDKNKfmLAeJ4:17055
+linear-1.21.1-LooYT6hNAfFDKNKfmLAeJ4:15931
 main:                    3793
-monoid-extras-0.5.1-4Vh6NEbR5wB8rmvjOmljPV:6505
-multimap-1.2.1-LtOyamh2FCTIpKcwPSe14o:7178
-patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47:28317
-primitive-0.6.3.0-KfguiTuxgILGqu8JEOpKRI:1
+monoid-extras-0.5.1-4Vh6NEbR5wB8rmvjOmljPV:6506
+multimap-1.2.1-LtOyamh2FCTIpKcwPSe14o:6667
+patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47:27813
+primitive-0.6.3.0-KfguiTuxgILGqu8JEOpKRI:2
 ref-tf-0.4.0.2-LD4UXOE0PRZFEDMcKdnep:1
-reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:472357
-reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:809988
-semialign-1.1.0.1-DRPyOaHPQMpJh4iEXtgA7n:658
-some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp:8050
-svg-builder-0.1.1-FOVc9xXWf2h39ijFNBpjwA:63459
-text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar:102562
+reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:471624
+reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:937732
+scientific-0.3.6.2-At96sisF2cJASUojynWkon:2410
+semialign-1.1.0.1-DRPyOaHPQMpJh4iEXtgA7n:803
+some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp:8874
+svg-builder-0.1.1-FOVc9xXWf2h39ijFNBpjwA:57586
+text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar:110904
 these-1.1.1.1-DHfoIK50k1Y5HPs5C145TZ:786
-transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s:2833
-unordered-containers-0.2.10.0-9VJvocWubGJ2JWzqb21PzR:63201
-xen-fret-0.1.0.0-8cQSKCV9l9F10ryquXgVRE:152788
+transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s:2835
+unordered-containers-0.2.10.0-9VJvocWubGJ2JWzqb21PzR:2
+vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU:148240
+xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt:331163
 
 
 code size per module:
 
 adjunctions-4.4-IBKU560MUUtE7GJ2vzCFFO
-    Data.Functor.Rep:                   12250
+    Data.Functor.Rep:                   48137
+
+aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT
+    Data.Aeson.Encoding.Builder:        6405
+    Data.Aeson.Encoding.Internal:       174407
+    Data.Aeson.Parser.Internal:         44955
+    Data.Aeson.Parser.UnescapePure:     10655
+    Data.Aeson.TH:                      14806
+    Data.Aeson.Types.FromJSON:          2691
+    Data.Aeson.Types.Internal:          1160
+    Data.Aeson.Types.ToJSON:            2099
+
+aeson-casing-0.2.0.0-G5p2vhOn0hGJlFmLDhg7Z
+    Data.Aeson.Casing.Internal:         5132
+
+attoparsec-0.13.2.2-8BD21qJal1eAqGV4DRS4eY
+    Data.Attoparsec.ByteString.Buffer:  7616
+    Data.Attoparsec.ByteString.Char8:   24279
+    Data.Attoparsec.ByteString.Internal:954
+    Data.Attoparsec.ByteString.Lazy:    379
+    Data.Attoparsec.Internal:           1
+    Data.Attoparsec.Internal.Types:     10539
 
 base
-    Control.Concurrent.Chan:            1414
+    Control.Concurrent.Chan:            1277
     Control.Exception.Base:             1
     Control.Monad.Fix:                  1
     Control.Monad.IO.Class:             1
@@ -55,35 +86,37 @@ base
     Data.Foldable:                      364
     Data.Functor.Const:                 1
     Data.Functor.Identity:              1
-    Data.Functor.Product:               1437
-    Data.Maybe:                         6428
+    Data.Functor.Product:               1293
+    Data.Maybe:                         7918
     Data.OldList:                       1
     Data.Proxy:                         3026
-    Data.Semigroup:                     12840
+    Data.Semigroup:                     12842
     Data.Semigroup.Internal:            1
     Data.Traversable:                   1
     Data.Tuple:                         1
     Data.Type.Coercion:                 1
-    Data.Type.Equality:                 44668
-    Data.Typeable.Internal:             9868
+    Data.Type.Equality:                 43555
+    Data.Typeable.Internal:             2417
+    Debug.Trace:                        9868
     Foreign.C.Error:                    874
     Foreign.Marshal.Alloc:              2503
-    Foreign.Storable:                   2170
-    GHC.Arr:                            7342
-    GHC.Base:                           455
-    GHC.Char:                           5725
-    GHC.Conc.Sync:                      8582
-    GHC.Enum:                           133
-    GHC.Err:                            6723
+    Foreign.Storable:                   2282
+    GHC.Arr:                            6681
+    GHC.Base:                           308
+    GHC.Char:                           5484
+    GHC.Conc.Sync:                      17552
+    GHC.Enum:                           704
+    GHC.Err:                            5885
     GHC.Exception:                      2483
     GHC.Exception.Type:                 4620
     GHC.Fingerprint:                    885
-    GHC.Fingerprint.Type:               73214
+    GHC.Fingerprint.Type:               69306
     GHC.Float:                          2453
-    GHC.Float.ConversionUtils:          10882
+    GHC.Float.ConversionUtils:          10635
     GHC.Foreign:                        325
-    GHC.ForeignPtr:                     1298
-    GHC.IO:                             506
+    GHC.ForeignPtr:                     1
+    GHC.Generics:                       1127
+    GHC.IO:                             329
     GHC.IO.Buffer:                      1
     GHC.IO.BufferedIO:                  224
     GHC.IO.Device:                      398
@@ -92,136 +125,161 @@ base
     GHC.IO.Encoding.Latin1:             1
     GHC.IO.Encoding.Types:              58106
     GHC.IO.Encoding.UTF8:               11079
-    GHC.IO.Exception:                   24639
+    GHC.IO.Exception:                   24538
     GHC.IO.FD:                          274
-    GHC.IO.Handle:                      4660
+    GHC.IO.Handle:                      4464
     GHC.IO.Handle.FD:                   29761
-    GHC.IO.Handle.Internals:            15277
-    GHC.IO.Handle.Text:                 1656
+    GHC.IO.Handle.Internals:            15385
+    GHC.IO.Handle.Text:                 1588
     GHC.IO.Handle.Types:                1
     GHC.IO.Unsafe:                      157
     GHC.IORef:                          373
-    GHC.Int:                            9279
+    GHC.Int:                            11084
     GHC.List:                           1
     GHC.MVar:                           1
     GHC.Maybe:                          1735
     GHC.Num:                            113
-    GHC.Ptr:                            7789
-    GHC.Read:                           13679
+    GHC.Ptr:                            7610
+    GHC.Read:                           16711
     GHC.Real:                           256
-    GHC.STRef:                          13108
+    GHC.STRef:                          13144
     GHC.Show:                           3900
     GHC.Stack.CCS:                      488
-    GHC.Stack.Types:                    9569
-    GHC.TopHandler:                     1478
+    GHC.Stack.Types:                    9303
+    GHC.TopHandler:                     1836
     GHC.Unicode:                        1
-    GHC.Weak:                           786
-    GHC.Word:                           642
-    System.IO:                          13159
-    System.Posix.Internals:             13181
+    GHC.Weak:                           10846
+    GHC.Word:                           3689
+    Numeric:                            642
+    System.IO:                          916
+    System.IO.Error:                    122
+    System.Info:                        13159
+    System.Posix.Internals:             13196
     Text.ParserCombinators.ReadP:       1
-    Text.ParserCombinators.ReadPrec:    786
-    Text.Read:                          30489
+    Text.ParserCombinators.ReadPrec:    17234
+    Text.Printf:                        786
+    Text.Read:                          28894
     Text.Read.Lex:                      1
     Unsafe.Coerce:                      3626
 
 blaze-builder-0.4.1.0-4EBj6hCi4Z9F7NeE00XaNv
-    Blaze.ByteString.Builder.Html.Utf8: 662
+    Blaze.ByteString.Builder.Html.Utf8: 1511
 
 bytestring-0.10.8.2-FBklFuapa1a7kq4yflY7Bt
-    Data.ByteString:                    1845
-    Data.ByteString.Builder:            15164
-    Data.ByteString.Builder.Internal:   2588
-    Data.ByteString.Internal:           1349
+    Data.ByteString:                    1349
+    Data.ByteString.Builder:            12375
+    Data.ByteString.Builder.ASCII:      14339
+    Data.ByteString.Builder.Internal:   4394
+    Data.ByteString.Builder.Prim.Internal.Base16:14102
+    Data.ByteString.Internal:           3355
+    Data.ByteString.Lazy:               1158
     Data.ByteString.Lazy.Internal:      1
 
+case-insensitive-1.2.1.0-CIq41TSlk9rBbX87uWPBfa
+    Data.CaseInsensitive.Internal:      1
+
 colour-2.3.5-LFkzp284SGfHoPQQyfBpOL
-    Data.Colour.Chan:                   2451
-    Data.Colour.Internal:               850
-    Data.Colour.RGB:                    4911
-    Data.Colour.SRGB:                   89044
+    Data.Colour.Chan:                   2452
+    Data.Colour.Internal:               1
+    Data.Colour.Names:                  850
+    Data.Colour.RGB:                    9571
+    Data.Colour.SRGB:                   87120
 
 containers-0.6.0.1-BAqcfV1UBBeCIRjPbUYeSG
-    Data.IntMap.Internal:               35698
-    Data.IntMap.Strict:                 73353
-    Data.Map.Internal:                  879
-    Data.Tree:                          73561
+    Data.IntMap.Internal:               35486
+    Data.IntMap.Strict:                 73374
+    Data.Map.Internal:                  1
+    Data.Set.Internal:                  879
+    Data.Tree:                          72941
 
 dependent-map-0.4.0.0-7ZBYpIk3RCR58ZlZDKMN7P
-    Data.Dependent.Map:                 50608
+    Data.Dependent.Map:                 50385
     Data.Dependent.Map.Internal:        1
 
 dependent-sum-0.7.1.0-6mH5zQTyn838WQ5Pmi2hkK
-    Data.Dependent.Sum:                 17894
+    Data.Dependent.Sum:                 16893
 
 diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO
-    Diagrams.Core.Compile:              12686
+    Diagrams.Core.Compile:              12465
     Diagrams.Core.Envelope:             1484
     Diagrams.Core.Juxtapose:            454
-    Diagrams.Core.Measure:              2497
+    Diagrams.Core.Measure:              3040
     Diagrams.Core.Names:                1048
-    Diagrams.Core.Query:                57259
+    Diagrams.Core.Query:                56526
     Diagrams.Core.Style:                3329
-    Diagrams.Core.Trace:                12452
-    Diagrams.Core.Transform:            60397
-    Diagrams.Core.Types:                8478
+    Diagrams.Core.Trace:                11742
+    Diagrams.Core.Transform:            58971
+    Diagrams.Core.Types:                1649
 
 diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih
-    Diagrams.Angle:                     5800
-    Diagrams.Attributes:                18145
-    Diagrams.Attributes.Compile:        2942
-    Diagrams.BoundingBox:               6575
-    Diagrams.Combinators:               863
+    Diagrams.Align:                     8479
+    Diagrams.Angle:                     5616
+    Diagrams.Attributes:                15344
+    Diagrams.Attributes.Compile:        2525
+    Diagrams.BoundingBox:               8249
+    Diagrams.Combinators:               864
     Diagrams.Located:                   1
-    Diagrams.Parametric:                6546
-    Diagrams.Path:                      50846
-    Diagrams.Segment:                   10377
-    Diagrams.Size:                      25260
+    Diagrams.Parametric:                6445
+    Diagrams.Path:                      50295
+    Diagrams.Segment:                   10420
+    Diagrams.Size:                      25257
     Diagrams.Trail:                     1
-    Diagrams.TrailLike:                 4655
-    Diagrams.TwoD.Adjust:               13656
-    Diagrams.TwoD.Arc:                  5857
+    Diagrams.TrailLike:                 4386
+    Diagrams.TwoD.Adjust:               13484
+    Diagrams.TwoD.Arc:                  4821
     Diagrams.TwoD.Attributes:           1
-    Diagrams.TwoD.Combinators:          4678
-    Diagrams.TwoD.Ellipse:              74950
-    Diagrams.TwoD.Path:                 5485
-    Diagrams.TwoD.Points:               46711
-    Diagrams.TwoD.Segment:              4425
-    Diagrams.TwoD.Segment.Bernstein:    1250
-    Diagrams.TwoD.Text:                 1254
+    Diagrams.TwoD.Combinators:          4035
+    Diagrams.TwoD.Ellipse:              76882
+    Diagrams.TwoD.Path:                 5240
+    Diagrams.TwoD.Points:               46689
+    Diagrams.TwoD.Segment:              4359
+    Diagrams.TwoD.Segment.Bernstein:    10613
+    Diagrams.TwoD.Text:                 1255
     Diagrams.TwoD.Transform:            1
-    Diagrams.TwoD.Vector:               2246
+    Diagrams.TwoD.Vector:               2009
     Diagrams.Util:                      1
 
 diagrams-solve-0.1.2-Lr5Lu8LrlaZ7zXRSCLBdw6
-    Diagrams.Solve.Polynomial:          20462
+    Diagrams.Solve.Polynomial:          43599
 
 diagrams-svg-1.4.3-G7hBZmwBkEiB1t3X6zhEJX
-    Diagrams.Backend.SVG:               76879
-    Graphics.Rendering.SVG:             1
+    Diagrams.Backend.SVG:               82093
+    Graphics.Rendering.SVG:             5931
+
+directory-1.3.3.0-5pg72mHzHk4Dhxxy4wYd2z
+    System.Directory:                   1
+    System.Directory.Internal.Common:   5027
+    System.Directory.Internal.GHCJS:    1
 
 distributive-0.6.2-HKXiWbz21YEHYOoULaxc77
-    Data.Distributive:                  7457
+    Data.Distributive:                  7529
 
 dual-tree-0.2.2.1-BqrZYTmdpP8F9po1oEErm7
-    Data.Tree.DUAL.Internal:            28940
+    Data.Tree.DUAL.Internal:            19015
+
+filepath-1.4.2.1-DG92Jon7uT21h5exmtoJCU
+    System.FilePath.Posix:              28656
 
 fingertree-0.1.4.2-5iNGjEzNxpkI7q8kC5QiOe
-    Data.FingerTree:                    522
+    Data.FingerTree:                    2668
 
 ghc-prim
-    GHC.CString:                        8851
+    GHC.CString:                        7191
     GHC.Classes:                        139
     GHC.IntWord64:                      1610
     GHC.Tuple:                          173
-    GHC.Types:                          50359
+    GHC.Types:                          103228
 
 ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj
     Data.JSString:                      164
-    Data.JSString.Internal.Fusion.Common:233
+    Data.JSString.Internal.Fusion.Common:1
     Data.JSString.Internal.Fusion.Types:110
-    Data.JSString.Internal.Type:        1
-    GHCJS.Marshal.Internal:             496
+    Data.JSString.Internal.Type:        1098
+    GHCJS.Buffer:                       2069
+    GHCJS.Marshal:                      1
+    GHCJS.Marshal.Internal:             171
+    GHCJS.Marshal.Pure:                 1
+    JavaScript.Array.Internal:          496
 
 ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi
     GHCJS.DOM:                          825
@@ -231,29 +289,40 @@ ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi
     GHCJS.DOM.JSFFI.Generated.Document: 1254
     GHCJS.DOM.JSFFI.Generated.DocumentAndElementEventHandlers:468
     GHCJS.DOM.JSFFI.Generated.DocumentOrShadowRoot:193
-    GHCJS.DOM.JSFFI.Generated.Element:  118
+    GHCJS.DOM.JSFFI.Generated.Element:  1539
+    GHCJS.DOM.JSFFI.Generated.Enums:    118
     GHCJS.DOM.JSFFI.Generated.Event:    7500
     GHCJS.DOM.JSFFI.Generated.GlobalEventHandlers:460
     GHCJS.DOM.JSFFI.Generated.HTMLInputElement:3851
-    GHCJS.DOM.JSFFI.Generated.Node:     4461
-    GHCJS.DOM.Types:                    4670
+    GHCJS.DOM.JSFFI.Generated.Node:     2642
+    GHCJS.DOM.JSFFI.Generated.XMLHttpRequest:3963
+    GHCJS.DOM.JSFFI.XMLHttpRequest:     3143
+    GHCJS.DOM.Types:                    1751
 
 ghcjs-prim-0.1.1.0-EXzjGVHQlAS2XAXcu0iCbS
-    GHCJS.Prim:                         1998
-    GHCJS.Prim.Internal:                2299
+    GHCJS.Prim:                         1756
+    GHCJS.Prim.Internal:                2300
 
 integer-gmp
-    GHC.Integer.Logarithms.Internals:   51399
-    GHC.Integer.Type:                   1977
+    GHC.Integer.Logarithms.Internals:   68538
+    GHC.Integer.Type:                   1962
+
+integer-logarithms-1.0.3-8EbIvyaPt1VK2rKaCK88I2
+    Math.NumberTheory.Logarithms:       4661
 
 intervals-0.9.1-ANlqio4eGwgHOQfZDTyogZ
-    Numeric.Interval.Kaucher:           4115
+    Numeric.Interval.Kaucher:           231
+
+jsaddle-0.9.8.0-37KMgpDNf3nFolzylNMgUe
+    Language.Javascript.JSaddle.Arguments:1826
+    Language.Javascript.JSaddle.Object: 81
+    Language.Javascript.JSaddle.Value:  4117
 
 lens-4.18.1-Aupi6yd1P7pL7RmnJsMl7C
     Control.Lens.Internal.Indexed:      1
 
 linear-1.21.1-LooYT6hNAfFDKNKfmLAeJ4
-    Linear.Metric:                      15110
+    Linear.Metric:                      13986
     Linear.V2:                          1944
     Linear.Vector:                      1
 
@@ -261,102 +330,121 @@ main
     Main:                               3793
 
 monoid-extras-0.5.1-4Vh6NEbR5wB8rmvjOmljPV
-    Data.Monoid.Coproduct:              3617
+    Data.Monoid.Coproduct:              3618
     Data.Monoid.Deletable:              781
     Data.Monoid.Recommend:              2107
 
 multimap-1.2.1-LtOyamh2FCTIpKcwPSe14o
-    Data.MultiMap:                      7178
+    Data.MultiMap:                      6667
 
 patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47
     Data.Functor.Misc:                  161
-    Data.Patch.Class:                   5389
-    Data.Patch.DMap:                    17806
+    Data.Patch.Class:                   5386
+    Data.Patch.DMap:                    17303
     Data.Patch.DMapWithMove:            2988
-    Data.Patch.IntMap:                  361
-    Data.Patch.Map:                     1611
+    Data.Patch.IntMap:                  362
+    Data.Patch.Map:                     1612
     Data.Patch.MapWithMove:             1
 
 primitive-0.6.3.0-KfguiTuxgILGqu8JEOpKRI
     Control.Monad.Primitive:            1
+    Data.Primitive.Array:               1
 
 ref-tf-0.4.0.2-LD4UXOE0PRZFEDMcKdnep
     Control.Monad.Ref:                  1
 
 reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u
     Control.Monad.ReaderIO:             206
-    Data.FastMutableIntMap:             950
+    Data.FastMutableIntMap:             951
     Data.Map.Misc:                      143
-    Data.WeakBag:                       911
-    Reflex.Adjustable.Class:            14609
+    Data.WeakBag:                       912
+    Reflex.Adjustable.Class:            16344
     Reflex.Class:                       1477
     Reflex.Dynamic:                     368
     Reflex.FastWeak:                    1
-    Reflex.Host.Class:                  2941
+    Reflex.Host.Class:                  4103
     Reflex.Network:                     1
-    Reflex.NotReady.Class:              36424
+    Reflex.NotReady.Class:              36494
     Reflex.PerformEvent.Base:           1251
-    Reflex.PerformEvent.Class:          23559
+    Reflex.PerformEvent.Class:          23209
     Reflex.PostBuild.Base:              1
-    Reflex.PostBuild.Class:             65992
+    Reflex.PostBuild.Class:             64926
     Reflex.Requester.Base:              1
-    Reflex.Requester.Class:             312493
-    Reflex.Spider.Internal:             9741
+    Reflex.Requester.Class:             310331
+    Reflex.Spider.Internal:             9616
     Reflex.TriggerEvent.Base:           1
-    Reflex.TriggerEvent.Class:          1287
+    Reflex.TriggerEvent.Class:          1288
 
 reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2
-    Foreign.JavaScript.TH:              2006
-    Reflex.Dom.Builder.Class:           130584
-    Reflex.Dom.Builder.Class.Events:    588807
-    Reflex.Dom.Builder.Immediate:       35203
-    Reflex.Dom.Main:                    43885
-    Reflex.Dom.Old:                     7093
-    Reflex.Dom.Widget.Basic:            2410
+    Foreign.JavaScript.TH:              1483
+    Reflex.Dom.Builder.Class:           130628
+    Reflex.Dom.Builder.Class.Events:    591674
+    Reflex.Dom.Builder.Immediate:       35332
+    Reflex.Dom.Main:                    43675
+    Reflex.Dom.Old:                     4697
+    Reflex.Dom.Prerender:               8555
+    Reflex.Dom.Widget.Basic:            88471
+    Reflex.Dom.Xhr:                     735
+    Reflex.Dom.Xhr.Exception:           4620
+    Reflex.Dom.Xhr.Foreign:             1
+    Reflex.Dom.Xhr.ResponseType:        27861
+
+scientific-0.3.6.2-At96sisF2cJASUojynWkon
+    Data.Scientific:                    2410
 
 semialign-1.1.0.1-DRPyOaHPQMpJh4iEXtgA7n
-    Data.Semialign.Internal:            658
+    Data.Semialign.Internal:            803
 
 some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp
-    Data.GADT.Internal:                 1344
-    Data.Some.Newtype:                  6706
+    Data.GADT.Internal:                 1634
+    Data.Some.Newtype:                  7240
 
 svg-builder-0.1.1-FOVc9xXWf2h39ijFNBpjwA
-    Graphics.Svg.Attributes:            53113
+    Graphics.Svg.Attributes:            49085
     Graphics.Svg.Core:                  2190
-    Graphics.Svg.Elements:              6309
-    Graphics.Svg.Path:                  1847
+    Graphics.Svg.Elements:              6310
+    Graphics.Svg.Path:                  1
 
 text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar
+    Data.JSString.Text:                 1848
     Data.Text:                          502
-    Data.Text.Array:                    1007
+    Data.Text.Array:                    5148
+    Data.Text.Encoding:                 2253
+    Data.Text.Encoding.Error:           1
+    Data.Text.Internal:                 1007
     Data.Text.Internal.Builder:         104
     Data.Text.Internal.Builder.Functions:416
-    Data.Text.Internal.Builder.Int.Digits:4102
+    Data.Text.Internal.Builder.Int.Digits:4103
     Data.Text.Internal.Builder.RealFloat.Functions:1
     Data.Text.Internal.Lazy:            751
-    Data.Text.Lazy:                     21639
-    Data.Text.Lazy.Builder.Int:         74039
+    Data.Text.Lazy:                     21640
+    Data.Text.Lazy.Builder.Int:         73129
     Data.Text.Lazy.Builder.RealFloat:   1
 
 these-1.1.1.1-DHfoIK50k1Y5HPs5C145TZ
     Data.These:                         786
 
 transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s
-    Control.Monad.Trans.Reader:         1833
+    Control.Monad.Trans.Reader:         1835
     Control.Monad.Trans.State.Strict:   1000
 
 unordered-containers-0.2.10.0-9VJvocWubGJ2JWzqb21PzR
     Data.HashMap.Array:                 1
-    Data.HashMap.Base:                  63200
+    Data.HashMap.Base:                  1
 
-xen-fret-0.1.0.0-8cQSKCV9l9F10ryquXgVRE
-    App:                                29200
-    Frets:                              2202
-    Frets.Util:                         98258
-    Utils:                              23128
+vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU
+    Data.Vector:                        504
+    Data.Vector.Mutable:                147736
+
+xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt
+    Reflex.Dom.Extras:                  51757
+    XenFret:                            115897
+    XenFret.App:                        76642
+    XenFret.AppData:                    62639
+    XenFret.Data:                       1182
+    XenFret.Util:                       23046
 
 
 
-packed metadata: 1525854
+packed metadata: 2190672
 
