@@ -1,19 +1,19 @@
 code size summary per package:
 
 adjunctions-4.4-IBKU560MUUtE7GJ2vzCFFO:48137
-aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT:257178
+aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT:257183
 aeson-casing-0.2.0.0-G5p2vhOn0hGJlFmLDhg7Z:5132
 attoparsec-0.13.2.2-8BD21qJal1eAqGV4DRS4eY:43768
-base:                    525814
+base:                    523396
 blaze-builder-0.4.1.0-4EBj6hCi4Z9F7NeE00XaNv:1511
 bytestring-0.10.8.2-FBklFuapa1a7kq4yflY7Bt:51073
 case-insensitive-1.2.1.0-CIq41TSlk9rBbX87uWPBfa:1
 colour-2.3.5-LFkzp284SGfHoPQQyfBpOL:99994
-containers-0.6.0.1-BAqcfV1UBBeCIRjPbUYeSG:182681
+containers-0.6.0.1-BAqcfV1UBBeCIRjPbUYeSG:182680
 dependent-map-0.4.0.0-7ZBYpIk3RCR58ZlZDKMN7P:50386
 dependent-sum-0.7.1.0-6mH5zQTyn838WQ5Pmi2hkK:16893
-diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO:150708
-diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih:307272
+diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO:150709
+diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih:307271
 diagrams-solve-0.1.2-Lr5Lu8LrlaZ7zXRSCLBdw6:43599
 diagrams-svg-1.4.3-G7hBZmwBkEiB1t3X6zhEJX:88024
 directory-1.3.3.0-5pg72mHzHk4Dhxxy4wYd2z:5029
@@ -21,14 +21,14 @@ distributive-0.6.2-HKXiWbz21YEHYOoULaxc77:7529
 dual-tree-0.2.2.1-BqrZYTmdpP8F9po1oEErm7:19015
 filepath-1.4.2.1-DG92Jon7uT21h5exmtoJCU:28656
 fingertree-0.1.4.2-5iNGjEzNxpkI7q8kC5QiOe:2668
-ghc-prim:                112341
+ghc-prim:                112262
 ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj:4111
 ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi:28989
 ghcjs-prim-0.1.1.0-EXzjGVHQlAS2XAXcu0iCbS:4056
 integer-gmp:             70500
 integer-logarithms-1.0.3-8EbIvyaPt1VK2rKaCK88I2:4661
 intervals-0.9.1-ANlqio4eGwgHOQfZDTyogZ:231
-jsaddle-0.9.8.0-37KMgpDNf3nFolzylNMgUe:6024
+jsaddle-0.9.8.0-37KMgpDNf3nFolzylNMgUe:7363
 lens-4.18.1-Aupi6yd1P7pL7RmnJsMl7C:1
 linear-1.21.1-LooYT6hNAfFDKNKfmLAeJ4:15931
 main:                    3793
@@ -37,8 +37,8 @@ multimap-1.2.1-LtOyamh2FCTIpKcwPSe14o:6667
 patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47:27813
 primitive-0.6.3.0-KfguiTuxgILGqu8JEOpKRI:2
 ref-tf-0.4.0.2-LD4UXOE0PRZFEDMcKdnep:1
-reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:471624
-reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:937732
+reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:471622
+reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:937728
 scientific-0.3.6.2-At96sisF2cJASUojynWkon:2410
 semialign-1.1.0.1-DRPyOaHPQMpJh4iEXtgA7n:803
 some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp:8874
@@ -48,7 +48,7 @@ these-1.1.1.1-DHfoIK50k1Y5HPs5C145TZ:786
 transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s:2835
 unordered-containers-0.2.10.0-9VJvocWubGJ2JWzqb21PzR:2
 vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU:148240
-xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt:331163
+xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt:328559
 
 
 code size per module:
@@ -58,10 +58,10 @@ adjunctions-4.4-IBKU560MUUtE7GJ2vzCFFO
 
 aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT
     Data.Aeson.Encoding.Builder:        6405
-    Data.Aeson.Encoding.Internal:       174407
+    Data.Aeson.Encoding.Internal:       174410
     Data.Aeson.Parser.Internal:         44955
     Data.Aeson.Parser.UnescapePure:     10655
-    Data.Aeson.TH:                      14806
+    Data.Aeson.TH:                      14808
     Data.Aeson.Types.FromJSON:          2691
     Data.Aeson.Types.Internal:          1160
     Data.Aeson.Types.ToJSON:            2099
@@ -96,8 +96,7 @@ base
     Data.Tuple:                         1
     Data.Type.Coercion:                 1
     Data.Type.Equality:                 43555
-    Data.Typeable.Internal:             2417
-    Debug.Trace:                        9868
+    Data.Typeable.Internal:             9868
     Foreign.C.Error:                    874
     Foreign.Marshal.Alloc:              2503
     Foreign.Storable:                   2282
@@ -124,7 +123,7 @@ base
     GHC.IO.Encoding.Failure:            2569
     GHC.IO.Encoding.Latin1:             1
     GHC.IO.Encoding.Types:              58106
-    GHC.IO.Encoding.UTF8:               11079
+    GHC.IO.Encoding.UTF8:               11078
     GHC.IO.Exception:                   24538
     GHC.IO.FD:                          274
     GHC.IO.Handle:                      4464
@@ -187,7 +186,7 @@ colour-2.3.5-LFkzp284SGfHoPQQyfBpOL
 
 containers-0.6.0.1-BAqcfV1UBBeCIRjPbUYeSG
     Data.IntMap.Internal:               35486
-    Data.IntMap.Strict:                 73374
+    Data.IntMap.Strict:                 73373
     Data.Map.Internal:                  1
     Data.Set.Internal:                  879
     Data.Tree:                          72941
@@ -205,7 +204,7 @@ diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO
     Diagrams.Core.Juxtapose:            454
     Diagrams.Core.Measure:              3040
     Diagrams.Core.Names:                1048
-    Diagrams.Core.Query:                56526
+    Diagrams.Core.Query:                56527
     Diagrams.Core.Style:                3329
     Diagrams.Core.Trace:                11742
     Diagrams.Core.Transform:            58971
@@ -220,7 +219,7 @@ diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih
     Diagrams.Combinators:               864
     Diagrams.Located:                   1
     Diagrams.Parametric:                6445
-    Diagrams.Path:                      50295
+    Diagrams.Path:                      50294
     Diagrams.Segment:                   10420
     Diagrams.Size:                      25257
     Diagrams.Trail:                     1
@@ -268,7 +267,7 @@ ghc-prim
     GHC.Classes:                        139
     GHC.IntWord64:                      1610
     GHC.Tuple:                          173
-    GHC.Types:                          103228
+    GHC.Types:                          103149
 
 ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj
     Data.JSString:                      164
@@ -314,7 +313,7 @@ intervals-0.9.1-ANlqio4eGwgHOQfZDTyogZ
     Numeric.Interval.Kaucher:           231
 
 jsaddle-0.9.8.0-37KMgpDNf3nFolzylNMgUe
-    Language.Javascript.JSaddle.Arguments:1826
+    Language.Javascript.JSaddle.Arguments:3165
     Language.Javascript.JSaddle.Object: 81
     Language.Javascript.JSaddle.Value:  4117
 
@@ -370,7 +369,7 @@ reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u
     Reflex.PostBuild.Base:              1
     Reflex.PostBuild.Class:             64926
     Reflex.Requester.Base:              1
-    Reflex.Requester.Class:             310331
+    Reflex.Requester.Class:             310329
     Reflex.Spider.Internal:             9616
     Reflex.TriggerEvent.Base:           1
     Reflex.TriggerEvent.Class:          1288
@@ -378,9 +377,9 @@ reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u
 reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2
     Foreign.JavaScript.TH:              1483
     Reflex.Dom.Builder.Class:           130628
-    Reflex.Dom.Builder.Class.Events:    591674
+    Reflex.Dom.Builder.Class.Events:    591671
     Reflex.Dom.Builder.Immediate:       35332
-    Reflex.Dom.Main:                    43675
+    Reflex.Dom.Main:                    43674
     Reflex.Dom.Old:                     4697
     Reflex.Dom.Prerender:               8555
     Reflex.Dom.Widget.Basic:            88471
@@ -438,13 +437,13 @@ vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU
 
 xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt
     Reflex.Dom.Extras:                  51757
-    XenFret:                            115897
+    XenFret:                            113306
     XenFret.App:                        76642
-    XenFret.AppData:                    62639
+    XenFret.AppData:                    62640
     XenFret.Data:                       1182
-    XenFret.Util:                       23046
+    XenFret.Util:                       23032
 
 
 
-packed metadata: 2190672
+packed metadata: 2188925
 
