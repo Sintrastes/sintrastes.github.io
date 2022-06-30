@@ -48,7 +48,7 @@ these-1.1.1.1-DHfoIK50k1Y5HPs5C145TZ:786
 transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s:2835
 unordered-containers-0.2.10.0-9VJvocWubGJ2JWzqb21PzR:2
 vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU:148240
-xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt:328559
+xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt:329003
 
 
 code size per module:
@@ -437,7 +437,7 @@ vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU
 
 xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt
     Reflex.Dom.Extras:                  51757
-    XenFret:                            113306
+    XenFret:                            113750
     XenFret.App:                        76642
     XenFret.AppData:                    62640
     XenFret.Data:                       1182
@@ -445,5 +445,5 @@ xen-fret-0.2.0.0-CU7BmnXYnhi8XLotJ1FVvt
 
 
 
-packed metadata: 2188925
+packed metadata: 2188977
 
