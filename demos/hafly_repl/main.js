@@ -3,6 +3,6 @@ function initTerm() {
     setTimeout(function(){ 
         var term = new Terminal();
         term.open(document.getElementById('terminal'));
-        term.write(' >')
+        term.write(' >');
     }, 150);
 }
