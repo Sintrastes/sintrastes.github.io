@@ -5,7 +5,7 @@ function initTerm() {
         term.open(document.getElementById('terminal'));
         term.write(' > ');
         term.onKey(function(x) {
-            if (x != '\r') {
+            if (x.key != '\r') {
                 term.write(x.key);
             } else {
                 term.write('\r\n > ');
