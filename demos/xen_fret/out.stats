@@ -1,7 +1,7 @@
 code size summary per package:
 
 adjunctions-4.4-IBKU560MUUtE7GJ2vzCFFO:48137
-aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT:257185
+aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT:257188
 aeson-casing-0.2.0.0-G5p2vhOn0hGJlFmLDhg7Z:5132
 attoparsec-0.13.2.2-8BD21qJal1eAqGV4DRS4eY:43768
 base:                    529369
@@ -13,17 +13,17 @@ containers-0.6.0.1-BAqcfV1UBBeCIRjPbUYeSG:182685
 dependent-map-0.4.0.0-7ZBYpIk3RCR58ZlZDKMN7P:50386
 dependent-sum-0.7.1.0-6mH5zQTyn838WQ5Pmi2hkK:16893
 diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO:150679
-diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih:307468
-diagrams-solve-0.1.2-Lr5Lu8LrlaZ7zXRSCLBdw6:43601
-diagrams-svg-1.4.3-G7hBZmwBkEiB1t3X6zhEJX:88654
+diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih:307470
+diagrams-solve-0.1.2-Lr5Lu8LrlaZ7zXRSCLBdw6:43603
+diagrams-svg-1.4.3-G7hBZmwBkEiB1t3X6zhEJX:88655
 directory-1.3.3.0-5pg72mHzHk4Dhxxy4wYd2z:5029
 distributive-0.6.2-HKXiWbz21YEHYOoULaxc77:7530
-dual-tree-0.2.2.1-BqrZYTmdpP8F9po1oEErm7:19015
+dual-tree-0.2.2.1-BqrZYTmdpP8F9po1oEErm7:19018
 filepath-1.4.2.1-DG92Jon7uT21h5exmtoJCU:28656
 fingertree-0.1.4.2-5iNGjEzNxpkI7q8kC5QiOe:2668
-ghc-prim:                112881
+ghc-prim:                112929
 ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj:4111
-ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi:28989
+ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi:28990
 ghcjs-prim-0.1.1.0-EXzjGVHQlAS2XAXcu0iCbS:4056
 integer-gmp:             70500
 integer-logarithms-1.0.3-8EbIvyaPt1VK2rKaCK88I2:4661
@@ -38,20 +38,20 @@ patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47:27818
 primitive-0.6.3.0-KfguiTuxgILGqu8JEOpKRI:2
 ref-tf-0.4.0.2-LD4UXOE0PRZFEDMcKdnep:1
 reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:475970
-reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:936969
+reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:936976
 scientific-0.3.6.2-At96sisF2cJASUojynWkon:2410
 semialign-1.1.0.1-DRPyOaHPQMpJh4iEXtgA7n:803
 some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp:8874
-svg-builder-0.1.1-FOVc9xXWf2h39ijFNBpjwA:57748
-text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar:110978
+svg-builder-0.1.1-FOVc9xXWf2h39ijFNBpjwA:57749
+text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar:110979
 these-1.1.1.1-DHfoIK50k1Y5HPs5C145TZ:409
 time-1.8.0.2-3d3i5aGvKEfEHwUSNgliL4:786
 transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s:3313
 unbounded-delays-0.1.1.0-3OIBWhvs3opCI9f4squMMQ:1000
 unordered-containers-0.2.10.0-9VJvocWubGJ2JWzqb21PzR:458
 validation-1.1-KcBEigEqNJ1AP5U0MUC2sR:1
-vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU:161448
-xen-fret-0.2.0.0-3Yh3IgXaQtr5TFXO51aAfs:385802
+vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU:162310
+xen-fret-0.3.0.0-9TvUb5zwOEnCudlclAduaC:386534
 
 
 code size per module:
@@ -61,10 +61,10 @@ adjunctions-4.4-IBKU560MUUtE7GJ2vzCFFO
 
 aeson-1.4.5.0-CJrdbmIiyNCCL43pkUtGoT
     Data.Aeson.Encoding.Builder:        6405
-    Data.Aeson.Encoding.Internal:       174410
-    Data.Aeson.Parser.Internal:         44956
+    Data.Aeson.Encoding.Internal:       174411
+    Data.Aeson.Parser.Internal:         44957
     Data.Aeson.Parser.UnescapePure:     10655
-    Data.Aeson.TH:                      14809
+    Data.Aeson.TH:                      14810
     Data.Aeson.Types.FromJSON:          2691
     Data.Aeson.Types.Internal:          1160
     Data.Aeson.Types.ToJSON:            2099
@@ -100,7 +100,7 @@ base
     Data.Traversable:                   1
     Data.Tuple:                         1
     Data.Type.Coercion:                 1
-    Data.Type.Equality:                 43556
+    Data.Type.Equality:                 43555
     Data.Typeable.Internal:             2719
     Debug.Trace:                        9868
     Foreign.C.Error:                    874
@@ -129,7 +129,7 @@ base
     GHC.IO.Encoding.Failure:            2569
     GHC.IO.Encoding.Latin1:             1
     GHC.IO.Encoding.Types:              58106
-    GHC.IO.Encoding.UTF8:               11078
+    GHC.IO.Encoding.UTF8:               11079
     GHC.IO.Exception:                   24540
     GHC.IO.FD:                          274
     GHC.IO.Handle:                      4464
@@ -218,7 +218,7 @@ diagrams-core-1.4.2-EWSy4bva6c6GoDH51qr0wO
 
 diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih
     Diagrams.Align:                     8479
-    Diagrams.Angle:                     5616
+    Diagrams.Angle:                     5618
     Diagrams.Attributes:                15344
     Diagrams.Attributes.Compile:        2525
     Diagrams.BoundingBox:               8249
@@ -236,19 +236,19 @@ diagrams-lib-1.4.3-HpxSxLwbjY94EghUpVHNih
     Diagrams.TwoD.Combinators:          4035
     Diagrams.TwoD.Ellipse:              77009
     Diagrams.TwoD.Path:                 5242
-    Diagrams.TwoD.Points:               46690
+    Diagrams.TwoD.Points:               46689
     Diagrams.TwoD.Segment:              4361
-    Diagrams.TwoD.Segment.Bernstein:    10486
+    Diagrams.TwoD.Segment.Bernstein:    10487
     Diagrams.TwoD.Text:                 1255
     Diagrams.TwoD.Transform:            1
     Diagrams.TwoD.Vector:               2010
     Diagrams.Util:                      1
 
 diagrams-solve-0.1.2-Lr5Lu8LrlaZ7zXRSCLBdw6
-    Diagrams.Solve.Polynomial:          43601
+    Diagrams.Solve.Polynomial:          43603
 
 diagrams-svg-1.4.3-G7hBZmwBkEiB1t3X6zhEJX
-    Diagrams.Backend.SVG:               82723
+    Diagrams.Backend.SVG:               82724
     Graphics.Rendering.SVG:             5931
 
 directory-1.3.3.0-5pg72mHzHk4Dhxxy4wYd2z
@@ -260,7 +260,7 @@ distributive-0.6.2-HKXiWbz21YEHYOoULaxc77
     Data.Distributive:                  7530
 
 dual-tree-0.2.2.1-BqrZYTmdpP8F9po1oEErm7
-    Data.Tree.DUAL.Internal:            19015
+    Data.Tree.DUAL.Internal:            19018
 
 filepath-1.4.2.1-DG92Jon7uT21h5exmtoJCU
     System.FilePath.Posix:              28656
@@ -273,7 +273,7 @@ ghc-prim
     GHC.Classes:                        139
     GHC.IntWord64:                      1610
     GHC.Tuple:                          173
-    GHC.Types:                          103662
+    GHC.Types:                          103710
 
 ghcjs-base-0.2.0.0-1ZwpBn3jHwIJYg96SPVRhj
     Data.JSString:                      164
@@ -294,7 +294,7 @@ ghcjs-dom-jsffi-0.9.4.0-Cc7XgCWMiStoAYSbjWadi
     GHCJS.DOM.JSFFI.Generated.Document: 1254
     GHCJS.DOM.JSFFI.Generated.DocumentAndElementEventHandlers:468
     GHCJS.DOM.JSFFI.Generated.DocumentOrShadowRoot:193
-    GHCJS.DOM.JSFFI.Generated.Element:  1539
+    GHCJS.DOM.JSFFI.Generated.Element:  1540
     GHCJS.DOM.JSFFI.Generated.Enums:    118
     GHCJS.DOM.JSFFI.Generated.Event:    7500
     GHCJS.DOM.JSFFI.Generated.GlobalEventHandlers:460
@@ -384,16 +384,16 @@ reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u
 reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2
     Foreign.JavaScript.TH:              1483
     Reflex.Dom.Builder.Class:           130628
-    Reflex.Dom.Builder.Class.Events:    591549
+    Reflex.Dom.Builder.Class.Events:    591554
     Reflex.Dom.Builder.Immediate:       35186
     Reflex.Dom.Main:                    43676
     Reflex.Dom.Old:                     4697
     Reflex.Dom.Prerender:               8766
-    Reflex.Dom.Widget.Basic:            88007
+    Reflex.Dom.Widget.Basic:            88008
     Reflex.Dom.Xhr:                     735
     Reflex.Dom.Xhr.Exception:           4613
     Reflex.Dom.Xhr.Foreign:             1
-    Reflex.Dom.Xhr.ResponseType:        27628
+    Reflex.Dom.Xhr.ResponseType:        27629
 
 scientific-0.3.6.2-At96sisF2cJASUojynWkon
     Data.Scientific:                    2410
@@ -406,7 +406,7 @@ some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp
     Data.Some.Newtype:                  7240
 
 svg-builder-0.1.1-FOVc9xXWf2h39ijFNBpjwA
-    Graphics.Svg.Attributes:            49087
+    Graphics.Svg.Attributes:            49088
     Graphics.Svg.Core:                  2350
     Graphics.Svg.Elements:              6310
     Graphics.Svg.Path:                  1
@@ -420,7 +420,7 @@ text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar
     Data.Text.Internal:                 1007
     Data.Text.Internal.Builder:         104
     Data.Text.Internal.Builder.Functions:416
-    Data.Text.Internal.Builder.Int.Digits:4102
+    Data.Text.Internal.Builder.Int.Digits:4103
     Data.Text.Internal.Builder.RealFloat.Functions:1
     Data.Text.Internal.Lazy:            751
     Data.Text.Lazy:                     21640
@@ -449,19 +449,19 @@ validation-1.1-KcBEigEqNJ1AP5U0MUC2sR
 
 vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU
     Data.Vector:                        504
-    Data.Vector.Mutable:                160944
+    Data.Vector.Mutable:                161806
 
-xen-fret-0.2.0.0-3Yh3IgXaQtr5TFXO51aAfs
-    Reflex.Dom.Extras:                  1785
-    Reflex.Dom.Forms:                   51760
-    XenFret:                            162857
-    XenFret.App:                        5878
-    XenFret.App.Util:                   76642
-    XenFret.AppData:                    62640
-    XenFret.Data:                       1182
-    XenFret.Util:                       23058
+xen-fret-0.3.0.0-9TvUb5zwOEnCudlclAduaC
+    Reflex.Dom.Extras:                  1786
+    Reflex.Dom.Forms:                   51866
+    XenFret:                            163175
+    XenFret.App:                        5895
+    XenFret.App.Util:                   76851
+    XenFret.AppData:                    62716
+    XenFret.Data:                       1184
+    XenFret.Util:                       23061
 
 
 
-packed metadata: 2263697
+packed metadata: 2272972
 
