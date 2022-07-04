@@ -1,7 +1,7 @@
 
 function initTerm() {
     setTimeout(function() { 
-        var term = new Terminal();
+        var term = new Terminal({convertEol: true});
         term.open(document.getElementById('terminal'));
         term.write(' > ');
         term.onKey(function(x) {
