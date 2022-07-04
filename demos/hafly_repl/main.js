@@ -1,5 +1,7 @@
 
 function initTerm() {
-    var term = new Terminal();
-    term.open(document.getElementById('terminal'));
+    setTimeout(function(){ 
+        var term = new Terminal();
+        term.open(document.getElementById('terminal'));
+    }, 50);
 }
