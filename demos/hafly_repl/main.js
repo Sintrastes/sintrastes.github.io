@@ -5,10 +5,11 @@ function initTerm() {
         term.open(document.getElementById('terminal'));
         term.write(' > ');
         term.onKey(function(x) {
-            term.write(x.key);
+            if (x /= '\n') {
+                term.write(x.key);
+            } else {
+                term.write('\r\n > ');
+            }
         });
-        term.onLineFeed(function() {
-            term.write('\n > ')
-        })
     }, 150);
 }
