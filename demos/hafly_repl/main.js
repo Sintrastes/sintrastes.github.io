@@ -10,6 +10,7 @@ function initTerm(callback) {
                 term.write(x.key);
             } else {
                 callback(currentText, function(processedText) {
+                    term.write('\r\n');
                     term.write(processedText);
                     term.write('\r\n > ');
                 });
