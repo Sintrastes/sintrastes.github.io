@@ -13,12 +13,6 @@
     padding: 25px;
 }
 
-.hide-when-pane-open {
-    width: 0%;
-    display: none;
-}
-
-
 @media (min-width: 800px) {
     .hide-when-pane-open {
         width: 0%;
