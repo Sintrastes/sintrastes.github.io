@@ -51,7 +51,7 @@ unbounded-delays-0.1.1.0-3OIBWhvs3opCI9f4squMMQ:1000
 unordered-containers-0.2.10.0-9VJvocWubGJ2JWzqb21PzR:458
 validation-1.1-KcBEigEqNJ1AP5U0MUC2sR:1
 vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU:174622
-xen-fret-0.3.0.0-6ehFoKqWXUECn4WWi0Yv0C:397048
+xen-fret-0.3.0.0-6ehFoKqWXUECn4WWi0Yv0C:397350
 
 
 code size per module:
@@ -453,7 +453,7 @@ vector-0.12.0.3-GxUuUk5VIwE9IztBhOQUPU
 
 xen-fret-0.3.0.0-6ehFoKqWXUECn4WWi0Yv0C
     Reflex.Dom.Extras:                  1785
-    Reflex.Dom.Forms:                   51758
+    Reflex.Dom.Forms:                   52060
     XenFret:                            174352
     XenFret.App:                        5878
     XenFret.App.Util:                   76156
@@ -464,5 +464,5 @@ xen-fret-0.3.0.0-6ehFoKqWXUECn4WWi0Yv0C
 
 
 
-packed metadata: 2295493
+packed metadata: 2295922
 
