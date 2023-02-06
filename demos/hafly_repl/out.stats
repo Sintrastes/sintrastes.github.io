@@ -20,12 +20,12 @@ parser-combinators-1.2.1-68MVQ3ftOhnKenbCdio5ZO:7334
 patch-0.0.4.0-7nXX9SMZzJTA658w5i0K47:31386
 primitive-0.6.3.0-KfguiTuxgILGqu8JEOpKRI:1
 ref-tf-0.4.0.2-LD4UXOE0PRZFEDMcKdnep:1
-reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:475642
-reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:813499
+reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u:475767
+reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2:813516
 some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp:2858
 text-1.2.3.0-BEe1j41q4GDJqgEvxRtnar:1
 these-1.1.1.1-DHfoIK50k1Y5HPs5C145TZ:1198
-transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s:57565
+transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s:58863
 
 
 code size per module:
@@ -218,12 +218,12 @@ reflex-0.8.2.0-1FScBWaMG8X9FlRQFLge5u
     Reflex.Host.Class:                  1
     Reflex.NotReady.Class:              36652
     Reflex.PerformEvent.Base:           1296
-    Reflex.PerformEvent.Class:          26105
+    Reflex.PerformEvent.Class:          26106
     Reflex.PostBuild.Base:              1
     Reflex.PostBuild.Class:             67326
     Reflex.Requester.Base:              1
     Reflex.Requester.Class:             315861
-    Reflex.Spider.Internal:             9989
+    Reflex.Spider.Internal:             10113
     Reflex.TriggerEvent.Base:           1
     Reflex.TriggerEvent.Class:          1586
 
@@ -233,7 +233,7 @@ reflex-dom-core-0.7.0.0-GMCsMWIgHFvFN9LT7BgPB2
     Reflex.Dom.Builder.Class.Events:    605465
     Reflex.Dom.Builder.Immediate:       35958
     Reflex.Dom.Main:                    5052
-    Reflex.Dom.Prerender:               34670
+    Reflex.Dom.Prerender:               34687
     Reflex.Dom.Widget.Basic:            656
 
 some-1.0.1-DqCZuqmqycKFlyafXlZ9Rp
@@ -248,9 +248,9 @@ these-1.1.1.1-DHfoIK50k1Y5HPs5C145TZ
 
 transformers-0.5.6.2-KaPP0fdMTwBF02jPgfEE5s
     Control.Monad.Trans.Reader:         1820
-    Control.Monad.Trans.State.Strict:   55745
+    Control.Monad.Trans.State.Strict:   57043
 
 
 
-packed metadata: 1231880
+packed metadata: 1232947
 
