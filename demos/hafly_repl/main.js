@@ -26,9 +26,12 @@ function initTerm(callback) {
                 term.write(x.key);
                 currentText += x.key;
                 cursorPosition += 1;
-            } else if (x.key == '\x1B[D' && cursorPosition > currentText.length) {
+            } else if (x.key == '\x1B[D' && cursorPosition > 0) {
                 term.write(x.key);
                 cursorPosition -= 1;
+            } else if (x.key == '\x1B[D' && cursorPosition < currentText.length) {
+                term.write(x.key);
+                cursorPosition += 1;
             }
             console.log(x);
         });
