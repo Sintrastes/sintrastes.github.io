@@ -1,4 +1,3 @@
-
 function initTerm(callback) {
     setTimeout(function() { 
         var term = new Terminal({convertEol: true});
@@ -20,6 +19,7 @@ function initTerm(callback) {
                 term.write(x.key);
                 currentText += x.key;
             }
+            console.log(x);
         });
     }, 150);
 }
