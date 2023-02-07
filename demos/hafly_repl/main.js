@@ -1,4 +1,3 @@
-
 function initTerm(callback) {
     // setTimeout(function() { 
         var term = new Terminal({convertEol: true});
@@ -29,7 +28,7 @@ function initTerm(callback) {
             } else if (x.key == '\x1B[D' && cursorPosition > 0) {
                 term.write(x.key);
                 cursorPosition -= 1;
-            } else if (x.key == '\x1B[D' && cursorPosition < currentText.length) {
+            } else if (x.key == '\x1B[C' && cursorPosition < currentText.length) {
                 term.write(x.key);
                 cursorPosition += 1;
             }
