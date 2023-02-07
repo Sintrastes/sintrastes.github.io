@@ -13,7 +13,7 @@ function initTerm(callback) {
                     term.write('\r\n > ');
                     currentText = '';
                 });
-            } else if (x.key == '\b') {
+            } else if (x.key.charCodeAt(0) == 127) {
                 term.write("\b \b");
                 currentText = currentText.substring(0, currentText.length - 1);
             } else {
