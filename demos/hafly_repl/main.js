@@ -6,16 +6,19 @@ function initTerm(callback) {
         term.open(document.getElementById('terminal'));
         term.write(' > ');
         term.onKey(function(x) {
-            if (x.key != '\r') {
-                term.write(x.key);
-                currentText += x.key;
-            } else {
+            if (x.key == '\r') {
                 callback(currentText, function(processedText) {
                     term.write('\r\n');
                     term.write(processedText);
                     term.write('\r\n > ');
                     currentText = '';
                 });
+            } else if (x.key == '\b') {
+                term.write("\b \b");
+                currentText = currentText.substring(0, currentText.length - 1);
+            } else {
+                term.write(x.key);
+                currentText += x.key;
             }
         });
     }, 150);
