@@ -17,7 +17,7 @@ function initTerm(callback) {
                     term.write("\b \b");
                     currentText = currentText.substring(0, currentText.length - 1);
                 }
-            } else {
+            } else if (x.key != '\x1B[A' && x.key != '\x1B[B') {
                 term.write(x.key);
                 currentText += x.key;
             }
