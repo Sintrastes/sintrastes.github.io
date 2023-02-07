@@ -1,4 +1,3 @@
-
 function initTerm(callback) {
     setTimeout(function() { 
         var term = new Terminal({convertEol: true});
@@ -13,9 +12,11 @@ function initTerm(callback) {
                     term.write('\r\n > ');
                     currentText = '';
                 });
-            } else if (x.key.charCodeAt(0) == 127 && currentText.length > 0) {
-                term.write("\b \b");
-                currentText = currentText.substring(0, currentText.length - 1);
+            } else if (x.key.charCodeAt(0) == 127) {
+                if (currentText.length > 0) {
+                    term.write("\b \b");
+                    currentText = currentText.substring(0, currentText.length - 1);
+                }
             } else {
                 term.write(x.key);
                 currentText += x.key;
