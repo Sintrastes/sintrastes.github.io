@@ -20,14 +20,12 @@ function initTerm(callback) {
                 });
             } else if (x.key.charCodeAt(0) == 127) {
                 if (currentText.length > 0) {
-                    term.write("\b \b");
+                    term.write("\b \b\x9BP");
                     currentText = currentText.substring(0, currentText.length - 1);
                     cursorPosition -= 1;
                 }
             } else if (x.key != '\x1B[A' && x.key != '\x1B[B' && x.key != '\x1B[C' && x.key != '\x1B[D') { 
-                if(x.key.charCodeAt(0) != 127) {
-                    term.write('\x9B@');
-                }
+                term.write('\x9B@');
                 term.write(x.key);
                 currentText += x.key;
                 cursorPosition += 1;
