@@ -25,7 +25,9 @@ function initTerm(callback) {
                     cursorPosition -= 1;
                 }
             } else if (x.key != '\x1B[A' && x.key != '\x1B[B' && x.key != '\x1B[C' && x.key != '\x1B[D') { 
-                term.write('\x9B@');
+                if(x.key != '\x7F') {
+                    term.write('\x9B@');
+                }
                 term.write(x.key);
                 currentText += x.key;
                 cursorPosition += 1;
