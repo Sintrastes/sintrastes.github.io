@@ -2,7 +2,7 @@
 function initTerm(callback) {
     // setTimeout(function() { 
         var term = new Terminal({convertEol: true});
-        term.modes.insertMode = false;
+        term.modes.insertMode = true;
         
         var currentText = '';
         var cursorPosition = 0;
